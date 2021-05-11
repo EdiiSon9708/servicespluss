@@ -1,0 +1,32 @@
+<section class="section discover-area bg-gray overflow-hidden py-4">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 col-lg-6 order-2 order-lg-1">
+                <!-- Discover Thumb -->
+                <div class="service-thumb discover-thumb mx-auto text-center pt-4 pt-lg-0">
+                    <img *ngIf="!dataContent" src="https://via.placeholder.com/700x400?text=Servicepluss" alt="imagen_no_data">
+
+                    <img *ngIf="dataContent[10].content_pgc === null" [src]="dataContent[7].content_pgc | safePipe: 'url'" [alt]="dataContent[7].desc_pgc">
+
+                    <div *ngIf="dataContent || dataContent[7].content_pgc === null" class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" [src]="dataContent[10].content_pgc | safePipe: 'resourceUrl'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="700" height="400" frameborder="0" webkitallowfullscreen
+                            mozallowfullscreen allowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 order-1 order-lg-2">
+                <!-- Discover Text -->
+                <div class="discover-text pt-4 pt-lg-0">
+                    <h2 class="promo-text mb-4 text-muted" *ngIf="dataContent">{{dataContent[5].content_pgc}}</h2>
+                    <h2 class="shine-sidenav lines-shimmer-sidenav" *ngIf="!dataContent"></h2>
+                    <div class="service-text media-body">
+                        <p *ngIf="dataContent">{{dataContent[6].content_pgc}}</p>
+                        <p *ngIf="!dataContent" class="shine-sidenav lines-shimmer-sidenav"></p>
+                    </div>
+                    <a routerLink="/about" fragment="how-to-use" routerLinkActive="router-link-active" class="btn prolend-btn mt-4">Conoce más
+                        <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>     
+    </div>
+</section>

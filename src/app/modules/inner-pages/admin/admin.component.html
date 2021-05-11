@@ -1,0 +1,51 @@
+<div class="main">
+    <app-breadcrumb-admin [tittle]="tittle" [dataUser]="user"></app-breadcrumb-admin>
+    <section>
+        <div class="container mt-2 mb-5 d-none d-sm-none d-md-block">
+            <mat-tab-group mat-align-tabs="start">
+                <mat-tab>
+                    <ng-template mat-tab-label><i class="fas fa-paper-plane iconic mr-2"></i>Mis servicios
+                    </ng-template>
+                    <app-myservice class="container"></app-myservice>
+                </mat-tab>
+
+                <!-- <mat-tab>
+                    <ng-template mat-tab-label><i class="fas fa-bell iconic mr-2"></i>Mis notificaciones -->
+                <!-- <div class="badge bg-danger text-white badge-pill ml-1">1</div> -->
+                <!-- </ng-template>
+                    <app-notification></app-notification>
+                </mat-tab> -->
+
+                <mat-tab>
+                    <ng-template mat-tab-label><i class="fas fa-user iconic mr-2"></i>Mi perfil
+                    </ng-template>
+                    <app-profile [dataUser]="user"></app-profile>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+        <div class="container mt-2 mb-5 d-block d-sm-block d-md-none">
+            <mat-tab-group mat-align-tabs="start" class="">
+                <mat-tab>
+                    <ng-template mat-tab-label><i class="fas fa-paper-plane iconic mr-2"></i>Mis servicios
+                    </ng-template>
+                    <app-myservice class="container"></app-myservice>
+                </mat-tab>
+
+                <mat-tab>
+                    <ng-template mat-tab-label><i class="fas fa-bell iconic mr-2"></i>Mis notificaciones
+                        <!-- <div class="badge bg-danger text-white badge-pill ml-1">1</div> -->
+                    </ng-template>
+                    <app-notification></app-notification>
+                </mat-tab>
+
+                <mat-tab>
+                    <ng-template mat-tab-label><i class="fas fa-user iconic mr-2"></i>Mi perfil
+                    </ng-template>
+                    <app-profile [dataUser]="user"></app-profile>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </section>
+    <app-footer-one></app-footer-one>
+</div>

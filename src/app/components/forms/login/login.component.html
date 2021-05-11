@@ -1,0 +1,273 @@
+<!-- Iniciar sesion -->
+<div *ngIf="selectedFormAuthentic === 0">
+    <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-8 mt-lg-0 shadow-lg">
+        <div class="contact-top">
+            <h3 class="contact-title text-secondary fw-3 py-3">Iniciar sesión</h3>
+        </div>
+
+        <form [formGroup]="userLoginFormGroup" (ngSubmit)="onLoginUser()">
+            <div class="col-12">
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>local_post_office</mat-icon>
+                    <mat-label>Correo electronico</mat-label>
+                    <input type="text" matInput formControlName="email" required>
+                    <mat-error>Campo obligatorio!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
+                    <mat-error>Campo obligatorio!</mat-error>
+                </mat-form-field>
+
+                <div class="form-group mb-0">
+                    <a type="button" (click)="changeForm(2)"><u>¿Olvido su contraseña?</u></a>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button class="" type="submit" class="btn btn-bordered w-100 mt-3 mt-sm-4">Ingresar</button>
+                <div class="social-icons d-flex justify-content-center mt-3">
+                    <a class="facebook" (click)="onFacebookLogin()">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="google-plus" (click)="onGoogleLogin()">
+                        <i class="fab fa-google-plus-g"></i>
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+        <div class="col-12"><span class="" class="d-block pt-2 mt-4 border-top">¿No tienes una
+                cuenta? <a type="button" (click)="changeForm(1)"><u>Regístrate aquí</u></a></span>
+        </div>
+    </div>
+</div>
+<!-- fin iniciar sesion -->
+
+<!-- Registrarse y aceptar terminos-->
+
+<div *ngIf="selectedFormAuthentic === 1">
+    <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-5 mt-lg-0 shadow-lg">
+        <div class="contact-top">
+            <h3 class="contact-title text-secondary fw-3 py-3">Registrarse</h3>
+        </div>
+        <form [formGroup]="userRegisterFormGroup" (ngSubmit)="onRegisterUser()" novalidate>
+            <div class="col-12">
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-label>Nombre completo</mat-label>
+                    <input type="text" matInput formControlName="fullName" required>
+                    <mat-error>Campo obligatorio!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>local_post_office</mat-icon>
+                    <mat-label>Correo electrónico</mat-label>
+                    <input type="text" matInput formControlName="email" required>
+                    <mat-error>Campo obligatorio!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
+                    <mat-error>Campo obligatorio!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input type="password" matInput formControlName="confirmPassword" required>
+                    <mat-error>Campo obligatorio!</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-12">
+                <button class="" type="submit" class="btn btn-bordered w-100 mt-3 mt-sm-4" [disabled]="userRegisterFormGroup.invalid">Registrarse</button>
+                <br>
+                <span>Al
+                    registrarse, acepta nuestros:
+                </span>
+                <br>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit" required="required"
+                            class="form-control" formControlName="termsAndCondit" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(1)"> Terminos &amp; Política de
+                        privacidad</a>
+                </div>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit1" required="required"
+                            class="form-control" formControlName="termsAndCondit1" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(2)"> Autorización Datos Personales </a>
+                </div>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit2" required="required"
+                            class="form-control" formControlName="termsAndCondit2" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(3)"> Politica Tratamiento de Datos </a>
+                </div>
+                <!-- <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit3" required="required"
+                            class="form-control" formControlName="termsAndCondit3" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(4)"> Aviso Privacidad  </a>
+                </div> -->
+            </div>
+        </form>
+        <div class="col-12"><span class="d-block pt-2 mt-4 border-top">¿Ya tiene una
+                cuenta? <a type="button" (click)="changeForm(0)"><u>Inicia sesión</u></a></span>
+        </div>
+    </div>
+    <p class="form-message"></p>
+</div>
+
+
+
+<!-- olvido su contraseña -->
+
+<div *ngIf="selectedFormAuthentic === 2">
+    <div class="contact-box bg-white text-center rounded p-lg-0 p-sm-5 mt-5 mt-lg-0 shadow-lg">
+        <div class="row align-items-center justify-content-center h-100">
+            <div class="col-12 col-md-10 col-lg-8 p-0">
+                <div class="subscribe-content text-center">
+                    <h3 class="text-muted mt-5 pb-3 pt-3">Recuperar contraseña</h3>
+                    <p class="pb-3 pl-4 pr-4">
+                        Introdusca su correo electrónico. <br> Le enviaremos un enlace para restablecer su contraseña
+                    </p>
+                    <!-- input escritorio -->
+                    <form [formGroup]="userRestorepassword" (ngSubmit)="restorePassword($event)">
+                        <mat-form-field appearance="outline" fxFlex="100" class="d-none d-sm-none d-md-block">
+                            <mat-icon matSuffix>local_post_office</mat-icon>
+                            <mat-label>Correo electronico</mat-label>
+                            <input type="text" matInput formControlName="email" required>
+                            <mat-error>Campo obligatorio!</mat-error>
+                        </mat-form-field>
+                        <!-- input responsive -->
+                        <mat-form-field appearance="outline" fxFlex="100" class="pl-4 pr-4 d-block d-sm-block d-md-none">
+                            <mat-icon matSuffix>local_post_office</mat-icon>
+                            <mat-label>Correo electronico</mat-label>
+                            <input type="text" matInput formControlName="email" required>
+                            <mat-error>Campo obligatorio!</mat-error>
+                        </mat-form-field>
+                        <button type="submit" class="btn btn-lg btn-block mb-4">Recuperar
+                        contraseña</button>
+                    </form>
+                </div>
+                <div class="mb-5">
+                    <a style="cursor: pointer;" (click)="changeForm(0)" class="sad txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30 mb-5">
+                        <i class="fas fa-long-arrow-alt-left"></i> Regresar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- fin olvido su contraseña -->
+
+<!-- Aceptar terminos -->
+<div *ngIf="selectedFormAuthentic === 3">
+    <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-5 mt-lg-0 shadow-lg">
+        <form [formGroup]="userTerminosFormGroup" (ngSubmit)="AcceptTermins()" novalidate>
+            <div class="col-12">
+                <h5>Al registrarse, acepta nuestros:
+                </h5>
+                <br>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit" required="required"
+                            class="form-control" formControlName="termsAndCondit" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(1)"> Terminos &amp; Política de
+                        privacidad</a>
+                </div>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit1" required="required"
+                            class="form-control" formControlName="termsAndCondit1" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(2)"> Autorización Datos Personales </a>
+                </div>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit2" required="required"
+                            class="form-control" formControlName="termsAndCondit2" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(3)"> Politica Tratamiento de Datos </a>
+                </div>
+                <!-- <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" name="termsAndCondit3" required="required"
+                            class="form-control" formControlName="termsAndCondit3" />
+                        <span></span>
+                    </label>
+                    <a class="cursor" (click)="openDialog(4)"> Aviso Privacidad  </a>
+                </div> -->
+            </div>
+            <button class="" type="submit" class="btn btn-bordered w-100 mt-3 mt-sm-4" [disabled]="userTerminosFormGroup.invalid">Aceptar Terminos</button>
+        </form>
+    </div>
+    <p class="form-message"></p>
+</div>
+<!-- Fin Registrarse -->
+<!-- restore password -->
+<div *ngIf="selectedFormAuthentic === 4">
+    <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-5 mt-lg-0 shadow-lg">
+        <form [formGroup]="userPassword" (ngSubmit)="chagePassword($event)" novalidate>
+            <div class="col-12">
+                <h5>Restaure su Contraseña
+                </h5>
+                <br/>
+                <mat-form-field appearance="outline" fxFlex="100" class="d-none d-sm-none d-md-block">
+                    <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput formControlName="newPass" required [type]="hide ? 'password' : 'text'">
+                    <!-- <mat-error>Campo obligatorio!</mat-error> -->
+                    <mat-error *ngFor="let error of error_messages.password">
+                        <div class="error-message" *ngIf="userPassword.get('newPass').hasError(error.type) && (userPassword.get('newPass').dirty || userPassword.get('newPass').touched)">
+                            {{ error.message }}
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="100" class="d-none d-sm-none d-md-block">
+                    <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-label>Confirme Contraseña</mat-label>
+                    <input type="password" matInput formControlName="newPassConfirm" required [type]="hide ? 'password' : 'text'">
+                    <mat-error *ngFor="let error of error_messages.password_validate">
+                        <div class="error-message" *ngIf="userPassword.get('newPassConfirm').hasError(error.type) && (userPassword.get('newPassConfirm').dirty || userPassword.get('newPassConfirm').touched)">
+                            {{ error.message }}
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <div class="form-group" *ngIf="userPassword.errors?.sonIguales && !userPassword.pristine">
+                    <p class="text-danger">
+                        Las contraseñas deben ser iguales
+                    </p>
+                </div>
+            </div>
+            <button class="" type="submit" class="btn btn-bordered w-100 mt-3 mt-sm-4" [disabled]="!userPassword.valid">Restaurar</button>
+        </form>
+    </div>
+    <p class="form-message"></p>
+</div>
+<!-- fin restore password -->

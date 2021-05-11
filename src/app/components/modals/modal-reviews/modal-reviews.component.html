@@ -1,0 +1,48 @@
+<form [formGroup]="reviewForm">
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <h2 class="text-muted">Califíquenos</h2>
+        </div>
+        <div class="col-12 col-md-4">
+            <p class="calificacion">
+                <input id="radio5" type="radio" value="5" formControlName="reviews">
+                <label for="radio5"><i class="fas fa-star fa-2x"></i></label>
+                <input id="radio4" type="radio" value="4" formControlName="reviews">
+                <label for="radio4"><i class="fas fa-star fa-2x"></i></label>
+                <input id="radio3" type="radio" value="3" formControlName="reviews">
+                <label for="radio3"><i class="fas fa-star fa-2x"></i></label>
+                <input id="radio2" type="radio" value="2" formControlName="reviews">
+                <label for="radio2"><i class="fas fa-star fa-2x"></i></label>
+                <input id="radio1" type="radio" value="1" formControlName="reviews">
+                <label for="radio1"><i class="fas fa-star fa-2x"></i></label>
+            </p>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                <mat-label>Descripción <mat-icon matSuffix>create</mat-icon>
+                </mat-label>
+                <textarea matInput #message maxlength="500" minlength="50" 
+                rows="5" formControlName="calification"></textarea>
+                <mat-hint align="start" *ngIf="message.value.length < 50">
+                    <strong>Ingresar minimo 50 caracteres</strong>
+                </mat-hint>
+                <mat-hint align="end">{{message.value.length}} / 500</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-12 botones-align d-none d-sm-none d-md-block">
+            <button mat-dialog-close type="submit" class="btn btn-bordered-2 mt-1 mr-3"><i
+                    class="fas fa-clock pr-1"></i>Mas
+                tarde</button>
+            <button type="submit" class="btn btn-bordered-1 mt-1" (click)="onsubmitReview()"><i
+                    class="fas fa-star pr-1 color-yellow"></i>Calificar</button>
+        </div>
+        <div class="col-12 d-block d-sm-block d-md-none">
+            <button type="submit" class="w-100 btn btn-bordered-1 mt-1" (click)="onsubmitReview()"><i
+                    class="fas fa-star pr-1 color-yellow"></i>Calificar</button>
+            <button mat-dialog-close type="submit" class="w-100 btn btn-bordered-2 mt-1 mr-3"><i
+                    class="fas fa-clock pr-1"></i>Mas
+                tarde</button>
+        </div>
+    </div>
+</form>

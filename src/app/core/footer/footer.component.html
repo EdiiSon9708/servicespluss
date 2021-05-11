@@ -1,0 +1,87 @@
+<footer class="footer-area dark-bg">
+    <!-- Footer Top -->
+    <div class="footer-top ptb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Logo -->
+                        <h4 class="text-muted text-uppercase" *ngIf="footer">{{footer[0].content_pgc}}</h4>
+                        <h4 class="shine-sidenav lines-shimmer-sidenav" *ngIf="!footer"></h4>
+                        <p class="mt-2 mb-3 text-muted" *ngIf="footer">{{footer[1].content_pgc}}</p>
+                        <!-- Social Icons -->
+                        <div class="social-icons d-flex">
+                            <a class="facebook" href="https://es-la.facebook.com/" target="_blank" rel="noopener">
+                                <i class="fab fa-facebook-f"></i>
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="twitter" href="https://twitter.com/" target="_blank" rel="noopener">
+                                <i class="fab fa-twitter"></i>
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <!-- <a class="google-plus" href="https://mail.google.com/" target="_blank" rel="noopener">
+                                <i class="fab fa-google-plus-g"></i>
+                                <i class="fab fa-google-plus-g"></i>
+                            </a> -->
+                            <a class="instagram" href="https://www.instagram.com/" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Footer Title -->
+                        <h3 class="footer-title mb-2 text-muted">Información de interés</h3>
+                        <ul>
+                            <li class="py-2"><a routerLink="/about" fragment="about" routerLinkActive="router-link-active" class="text-muted">Sobre nosotros</a></li>
+                            <li class="py-2"><a routerLink="/professional_profile" routerLinkActive="router-link-active" class="text-muted">Perfiles profesionales</a>
+                            </li>
+                            <li class="py-2"><a mat-button (click)="openDialog(1)" class="text-muted cursor">Terminos
+                                    &amp; Condiciones</a></li>
+                            <li class="py-2"><a mat-button (click)="openDialog(2)" class="text-muted cursor">Autorización Datos Personales</a></li>
+                            <li class="py-2"><a mat-button (click)="openDialog(3)" class="text-muted cursor">Politica Tratamiento de Datos</a></li>
+                            <li class="py-2"><a mat-button (click)="openDialog(4)" class="text-muted cursor">Aviso Privacidad</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Footer Title -->
+                        <h3 class="footer-title mb-2 text-muted">Información de contacto</h3>
+                        <ul>
+                            <li class="py-2" *ngFor="let item of contacts">
+                                <a class="media">
+                                    <div class="social-icon mr-3">
+                                        <i class="fas {{item.icon}} text-muted"></i>
+                                    </div>
+                                    <span class="media-body align-self-center text-muted">{{item.info}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Copyright Area -->
+                    <div class="copyright-area d-flex flex-wrap justify-content-center justify-content-sm-between text-center py-4">
+                        <!-- Copyright Left -->
+                        <div class="copyright-left">&copy; Copyright 2020 <strong>Servicepluss.</strong> Todos los derechos reservados.</div>
+                        <!-- Copyright Right -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

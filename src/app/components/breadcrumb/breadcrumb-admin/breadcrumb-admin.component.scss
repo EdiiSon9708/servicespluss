@@ -1,0 +1,91 @@
+.text-white {
+    margin-top: 7%;
+}
+
+.ol {
+    padding-top: 4%;
+    padding-left: 15%;
+}
+
+.edit-image {
+    position: relative;
+    max-width: 75px;
+}
+
+.editar-photo {
+    cursor: pointer;
+    a {
+        color: white;
+        font-size: 13px;
+    }
+    top: 46px;
+    right: 0;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    // border: 1px solid red;
+    text-align: center;
+    background-color: #035AA6
+}
+
+@media (min-width: 992px) and (max-width: 1366px) {
+    .ol {
+        padding-top: 0%;
+        padding-left: 15%;
+    }
+}
+
+.thumbnail-perfil2 {
+    max-width: 70px!important;
+    min-width: 70px!important;
+}
+
+.files {
+    margin-top: 5%;
+}
+
+.edit-photo,
+.edit-photo:hover {
+    position: absolute;
+    left: 19%;
+    top: 80%;
+    width: 2%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.camera {
+    position: absolute !important;
+    left: 19% !important;
+    top: 79% !important;
+    cursor: pointer;
+}
+
+.edit-photo-responsive,
+.edit-photo-responsive:hover {
+    position: absolute;
+    left: 54%;
+    top: 53%;
+    width: 7%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.camera-responsive {
+    position: absolute !important;
+    left: 54% !important;
+    top: 55% !important;
+    cursor: pointer;
+}
+
+.thumbnail-perfil {
+    max-width: 70px!important;
+    min-width: 70px!important;
+}
+
+.rounded-circle {
+    width: 100%;
+    width: 70px!important;
+    height: 70px!important;
+}

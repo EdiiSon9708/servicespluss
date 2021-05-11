@@ -1,0 +1,86 @@
+<h2 class="text-muted" mat-dialog-title *ngIf="idService">Cotizaciones de servicio # SP-{{idService.idServicio}}</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="row my-3" *ngIf="cotizaciones.length === 0">
+        <div class="col-sm-12">
+            <div class="alert alert-danger" role="alert">
+                No se encontraron cotizaciones disponibles
+            </div>
+        </div>
+    </div>
+
+    <div class="my-2" *ngIf="cotizaciones.length > 0">
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let item of cotizaciones" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <img src="{{item.professional_quotation.foto_pfr}}" alt="" class="rounded-circle mr-2 mr-md-0">
+                        <div class="pl-0 pl-md-3 col-12">
+                            <span>{{item.professional_quotation.nombre_pfr}}</span>
+                            <p>Bogota,Colombia</p>
+
+                            <span class="alert" [ngClass]="{'alert-primary':item.est_srvq==1,'alert-success':item.est_srvq==3,'alert-danger':item.est_srvq==4}" role="alert">
+                                {{switchStatus(item.est_srvq)}}
+                            </span>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="row mt-3">
+                    <div class="col-12 col-md-7">
+                        <div class="mb-2">
+                            <span>Costo del servicio</span>
+                            <h4 class="text-muted">${{item.vlr_srvq}}</h4>
+                        </div>
+                        <div class="mb-2">
+                            <span>Titulo</span>
+                            <h4 class="text-muted">{{item.tittleq}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <span>Adjuntos</span>
+                        <!-- <div>
+                            <a href="" target="_blank" class="adjuntar"> <i
+                                    class="fas fa-paperclip mr-2"></i>img.jpg</a>
+                        </div>
+                        <div>
+                            <a href="" target="_blank" class="adjuntar"><i
+                                    class="fas fa-paperclip mr-2"></i>MiTrabajo.docx</a>
+                        </div>
+                        <div>
+                            <a href="" target="_blank" class="adjuntar"><i
+                                    class="fas fa-paperclip mr-2"></i>MiOtroTrabajo.pdf</a>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row mt-2" *ngIf="estadoServicio==1">
+                    <div class="col-12">
+                        <span>Descripción</span>
+                        <p class="text-muted">{{item.description_srvq}}</p>
+                    </div>
+
+                    <!-- botones en tamaño escritorio -->
+                    <div class="col-12 justify-content-end d-none d-sm-none d-md-flex">
+                        <a (click)="aceptatCotizacion(3,item.idServicioq,item.id_srvq)"><button class="bg-success mr-1 mr-md-2 btn">
+                                <i class="fas fa-check mr-2"></i>Aceptar
+                            </button></a>
+                        <a (click)="aceptatCotizacion(4,item.idServicioq,item.id_srvq)"><button class="bg-danger btn">
+                                <i class="fas fa-times mr-2"></i>Rechazar
+                            </button></a>
+                    </div>
+
+                    <!-- botones reponsive -->
+                    <div class="col-12 d-block d-sm-block d-md-none">
+                        <a (click)="aceptatCotizacion(3,item.idServicioq,item.id_srvq)"><button class="bg-success my-2 btn w-100">
+                                <i class="fas fa-check mr-2"></i>Aceptar
+                            </button></a>
+                        <a (click)="aceptatCotizacion(4,item.idServicioq,item.id_srvq)"><button class="bg-danger btn w-100">
+                                <i class="fas fa-times mr-2"></i>Rechazar
+                            </button></a>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>

@@ -1,0 +1,34 @@
+@import url(../../../assets/css/materialize.min.scss);
+.readMe {
+    width: 60%;
+    right: 40px
+}
+
+.carousel .carousel-item .card>img {
+    width: 100%;
+    height: 70%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    z-index: 0;
+    padding: 10px;
+}
+
+.text-title {
+    z-index: 1;
+}
+
+@media (min-width: 992px) and (max-width: 1366px) {
+    .conten-info-buttons {
+        margin-top: -3em!important;
+        margin-left: 6em!important;
+        h1 {
+            font-size: 2.5em!important;
+        }
+        p {
+            font-size: 0.8em!important;
+        }
+        .button-group {
+            margin-top: 10px;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "servicepluss-82a4d": {
+      "hosting": {
+        "prolend": [
+          "servicepluss-82a4d"
+        ]
+      }
+    }
+  }
+}

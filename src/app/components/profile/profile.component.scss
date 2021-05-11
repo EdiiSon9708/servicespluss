@@ -1,0 +1,25 @@
+.mat-form-field {
+    width: 100%;
+}
+
+.btn-primary {
+    background: #035aa6!important;
+}
+
+.w-18 {
+    width: 35%;
+}
+
+.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    background-color: #f17304;
+    border-color: #f17304;
+}
+
+.btn-success, .btn-success:active  {
+    background-color: #f17304;
+}
+
+.btn-success.focus, .btn-success:focus {
+    background-color: #f17304;
+    border-color: #f17304;
+}

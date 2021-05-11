@@ -1,0 +1,347 @@
+<section id="faq" class="pt-0 section faq-area style-two ptb_100">
+    <div class="container">
+        <div class="row justify-content-center wow bounceInLeft">
+            <div class="col-12">
+                <div class="horizontal-stepper-wrapper">
+
+                    <!-- HORIZONTAL STEPPER EXAMPLE -->
+                    <mat-horizontal-stepper class="mat-elevation-z4" [linear]="true" *ngIf="dataUser">
+                        <mat-step [stepControl]="horizontalStepperStep1">
+                            <form fxLayout="column" [formGroup]="horizontalStepperStep1" (ngSubmit)="onClickFormOne()">
+                                <ng-template matStepLabel>Categorías</ng-template>
+
+                                <div fxFlex="1 0 auto" fxLayout="column">
+                                    <mat-form-field appearance="outline" fxFlex="100" class="pt-5">
+                                        <mat-icon matSuffix>push_pin</mat-icon>
+                                        <mat-label>Seleccionar categoría*</mat-label>
+                                        <mat-error>Campo obligatorio!</mat-error>
+                                        <mat-select formControlName="categories">
+                                            <mat-option>Selecionar categoría</mat-option>
+                                            <mat-option *ngFor="let category of categoriesQuotation" [value]="category.id_catg" (click)="onClickSubcategory(category.id_catg)">{{category.nombre_catg}}</mat-option>
+                                        </mat-select>
+                                        <mat-hint align="end">Se requiere una categoría*</mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex="1 0 auto" fxLayout="column">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-icon matSuffix>push_pin</mat-icon>
+                                        <mat-label>Seleccionar subcategoría*</mat-label>
+                                        <mat-error>Campo obligatorio!</mat-error>
+                                        <mat-select formControlName="subcategories">
+                                            <mat-option>Selecionar Subcategoría</mat-option>
+                                            <mat-option *ngFor="let category of subCategories" [value]="category.id_scatg">
+                                                {{category.nombre_scatg}}</mat-option>
+                                        </mat-select>
+                                        <mat-hint align="end">Se requiere una subcategoría*</mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxLayout="column" fxLayoutAlign="center center">
+                                    <button type="submit" matStepperNext class="btn btn-primary btn-block">Siguiente <i
+                      class="fas fa-long-arrow-alt-right"></i></button>
+                                </div>
+                            </form>
+                        </mat-step>
+
+                        <mat-step [stepControl]="horizontalStepperStep2">
+                            <form fxLayout="column" [formGroup]="horizontalStepperStep2" (ngSubmit)="onClickFormTwo()">
+                                <ng-template matStepLabel>Detalles</ng-template>
+
+                                <mat-form-field appearance="outline" fxFlex="100">
+                                    <mat-icon matSuffix>create</mat-icon>
+                                    <mat-label>Titulo del servicio</mat-label>
+                                    <input matInput formControlName="tittle" placeholder="  Ej: Fuga de gas" required>
+                                    <mat-error>Campo obligatorio!</mat-error>
+                                    <mat-hint align="end">Se requiere titulo del servicio*</mat-hint>
+                                </mat-form-field>
+
+                                <div fxFlex="1 0 auto" fxLayout="row">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-icon matSuffix>create</mat-icon>
+                                        <mat-label>Descripción del servicio</mat-label>
+                                        <textarea matInput formControlName="description" placeholder="  Ej: Tengo una fuga de gas y requiero ayuda...  " required> </textarea>
+                                        <mat-error>Campo obligatorio!</mat-error>
+                                        <mat-hint align="end">Se requiere una descripción*</mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+                                <!-- añadir foto en tamaño de escritorio -->
+                                <b>Cargar Imagenes</b><br/>
+                                <span>Maximo 5 fotos, Formatos (.jpg,.png)</span>
+                                <div class="upload-box mb-2 d-none d-sm-none d-md-block">
+                                    <div class=" mb-2 upload-box-content">
+                                        <div class="drop-container mt-2" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+                                            <p> Arrastrar hasta aquí o
+                                                <label class="upload-button">
+                                                <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)"
+                                                [uploadInput]="uploadInput" multiple class="d-none"> <span class="btn btn-primary btn-block">selecciona archivos</span>
+                                                </label> para subir.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <!-- {{files.length}} -->
+                                    <div *ngFor="let file of files" class="file w-24 h-24 position-relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                        <img class="rounded" alt="Midone Tailwind HTML Admin Template" [src]="file.imagePreview">
+                                        <div class="w-5 h-5 p-1 d-flex bg-danger  align-items-center justify-content-center position-absolute rounded-full  cursor-pointer text-white remove-file " (click)="removeFile(file.id)"><span>x</span></div>
+                                    </div>
+                                </div>
+                                <!-- <pre>{{files | json}}</pre> -->
+
+                                <div class="mt-3" fxLayout="column" fxLayoutAlign="center center">
+                                    <button type="submit" matStepperNext class="btn btn-primary btn-block">Siguiente <i
+                      class="fas fa-long-arrow-alt-right"></i></button>
+                                </div>
+                            </form>
+                        </mat-step>
+
+                        <mat-step [stepControl]="horizontalStepperStep3">
+                            <form fxLayout="column" [formGroup]="horizontalStepperStep3">
+                                <ng-template matStepLabel>Finalizado</ng-template>
+
+                                <div class="input-field px-0 col-12 example-headers-align">
+                                    <!-- <mat-accordion class="example-headers-align" multi>
+                                        <mat-expansion-panel class="mb-3 mt-2" [(expanded)]="xpandStatus"> -->
+                                    <!-- <mat-expansion-panel-header class="pl-4"> -->
+                                    <div class="mb-3">
+                                        <span class="text-muted">Ubicación del servicio</span>
+                                    </div>
+                                    <mat-panel-title>
+                                    </mat-panel-title>
+                                    <!-- <mat-panel-description> -->
+                                    <!-- <span><small class="text-muted d-none d-sm-none d-md-block"> Campo obligatorio*</small></span> -->
+                                    <!-- <mat-icon matSuffix>place</mat-icon> -->
+                                    <!-- </mat-panel-description> -->
+                                    <!-- </mat-expansion-panel-header> -->
+
+                                    <div class="row pl-3 pr-3">
+                                        <!-- input buscar ubicacion -->
+                                        <!-- <div class="input-field col-12 col-lg-7 px-0 px-lg-3">
+                                                    <mat-form-field class="w-100 autocomplete-container" appearance="outline" fxFlex="100">
+                                                        <mat-icon matSuffix>add_location_alt</mat-icon>
+                                                        <mat-label>Buscar ubicación</mat-label>
+                                                        <input matInput formControlName="address" matGoogleMapsAutocomplete type="text" (onAutocompleteSelected)="onAutocompleteSelected($event)" (onLocationSelected)="onLocationSelected($event)" required>
+                                                        <mat-error>Campo obligatorio!</mat-error>
+                                                        <mat-hint align="end">Se requiere ubicación*</mat-hint>
+                                                    </mat-form-field>
+                                                </div> -->
+
+                                        <!-- Mis direcciones -->
+                                        <!-- <div class="input-field col-12 col-md-4 col-lg-3 px-0 pr-lg-3 mb-3 mb-lg-0">
+                                                    <mat-form-field appearance="outline" fxFlex="100">
+                                                        <mat-icon matSuffix>add_business</mat-icon>
+                                                        <mat-label>Mis direcciones</mat-label>
+                                                        <mat-select formControlName="address">
+                                                            <mat-option>Selecionar dirección</mat-option>
+                                                            <mat-option value="calle_1">Calle de prueba 1 Bogotá(Cund)</mat-option>
+                                                            <mat-option value="calle_1">Calle de prueba 2 Bogotá(Cund)</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div> -->
+
+                                        <!-- Boton guardar-->
+                                        <!-- <div class="col-12 col-lg-2 d-md-block px-0 pr-lg-3">
+                                                    <button type="button" class="btn btn-primary btn-block btn-css" (click)="onClickAddress()">Guardar</button>
+                                                </div> -->
+
+                                        <form [formGroup]="formDireccion" (ngSubmit)="save($event)">
+                                            <ng-template matStepLabel>Ubicacion</ng-template>
+                                            <div class="row d-flex justify-content-center">
+                                                <!-- <div class="col-12 mt-1">
+                                                            <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                                <mat-label>Nombre y apellido(*)</mat-label>
+                                                                <mat-icon matSuffix>face</mat-icon>
+                                                                <input type="text" matInput formControlName="fullName">
+                                                                <mat-error>Nombre obligatorio!</mat-error>
+                                                            </mat-form-field>
+                                                        </div> -->
+                                                <div class="col-6">
+                                                    <!-- <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                                <mat-icon matSuffix> location_on</mat-icon>
+                                                                <mat-label>Departamento</mat-label>
+                                                                <input type="text" matInput formControlName="departament">
+                                                                <mat-error>Departamento Obligatorio!</mat-error>
+                                                            </mat-form-field> -->
+                                                    <mat-form-field class="example-full-width">
+                                                        <input type="text" placeholder="Digite Departamento" aria-label="Number" [formControl]="myControl" matInput [matAutocomplete]="auto">
+                                                        <mat-icon matSuffix>location_city</mat-icon>
+                                                        <mat-autocomplete #auto="matAutocomplete">
+                                                            <mat-option *ngFor="let depto of filteredDeptos | async" [value]="depto.Nombre" (click)="getCity(depto.IdDepartamento)">
+                                                                {{ depto.Nombre }}
+                                                            </mat-option>
+                                                        </mat-autocomplete>
+                                                        <mat-error *ngFor="let validation of validation_msgs.myControl">
+                                                            <div *ngIf="myControl.hasError(validation.type) && myControl.touched">
+                                                                {{validation.message}}
+                                                            </div>
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-6">
+                                                    <mat-form-field class="example-full-width w-100">
+                                                        <input type="text" placeholder="{{placeCity}}" aria-label="Number" [formControl]="myControl2" matInput [matAutocomplete]="auto2">
+                                                        <mat-icon matSuffix>location_city</mat-icon>
+                                                        <mat-autocomplete #auto2="matAutocomplete">
+                                                            <mat-option *ngFor="let city of filteredCitys | async" [value]="city.Nombre">
+                                                                {{ city.Nombre }}
+                                                            </mat-option>
+                                                        </mat-autocomplete>
+                                                        <mat-error *ngFor="let validation of validation_msgs.myControl2">
+                                                            <div *ngIf="myControl2.hasError(validation.type) && myControl2.touched">
+                                                                {{validation.message}}
+                                                            </div>
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                    <!-- <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                                <mat-label>Ciudad</mat-label>
+                                                                <mat-icon matSuffix>location_city</mat-icon>
+                                                                <input type="text" matInput formControlName="city">
+                                                                <mat-error>Ciudad Obligatorio!</mat-error>
+                                                            </mat-form-field> -->
+                                                </div>
+                                                <div class="col-12">
+                                                    <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                        <mat-icon matSuffix> person_pin_circle</mat-icon>
+                                                        <mat-label>Barrio <small class="text-muted ">(opcional)</small> </mat-label>
+                                                        <input type="text" matInput formControlName="neighborhood">
+                                                    </mat-form-field>
+                                                </div>
+                                                <!-- direction -->
+                                                <div class="col-12 d-flex pl-0 pr-0">
+                                                    <div class="col-6">
+                                                        <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                            <mat-label>Via</mat-label>
+                                                            <mat-icon matSuffix> swap_calls</mat-icon>
+                                                            <input type="text" matInput formControlName="via" placeholder="calle/carrera/tranversal">
+                                                            <mat-error> Via Obligatorio!</mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                            <mat-icon matSuffix>swap_horizontal_circle</mat-icon>
+                                                            <mat-label> Complemento</mat-label>
+                                                            <input type="text" matInput formControlName="complemento" placeholder="Ej: Apartamento 103 Torre 1 ">
+                                                            <mat-error> Numero Obligatorio!</mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <!-- <div class="col-1">
+
+                                                        <input type="checkbox" name="sn" class="form-control" formControlName="sn" />
+                                                        <span></span>
+
+                                                    </div> -->
+                                                </div>
+                                                <!--end direction -->
+                                                <!-- <div class="col-12">
+                                                            <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                                <mat-icon matSuffix>info</mat-icon>
+                                                                <mat-label>Datos adicionales <small class="text-muted ">(opcional)</small> </mat-label>
+                                                                <input type="text" matInput formControlName="info">
+                                                            </mat-form-field>
+                                                        </div> -->
+
+                                                <!-- <div class="col-12 pl-0 pr-0  mb-4"> -->
+                                                <!-- <div class="col-3 pl-0"> -->
+                                                <!-- <div>
+                                                                    <small class="ml-3 text-muted ">¿Es tu trabajo o casa?</small>
+                                                                </div> -->
+                                                <!-- <label>
+                                                                <input type="checkbox" name="" required="required"
+                                                                class="form-control" formControlName="sn" />
+                                                                <span>efdeasdfedfsdf</span>
+                                                            </label> -->
+                                                <!-- <mat-radio-group formControlName="" aria-label="Select an option">
+
+                                                                    <mat-radio-button value="1" class="ml-3 " color="primary">
+                                                                        <mat-icon class="homeWork p-0">work_outline</mat-icon> Trabajo </mat-radio-button>
+                                                                    <mat-radio-button value="2" class="ml-3" color="primary">
+                                                                        <mat-icon class="homeWork">home</mat-icon> Casa</mat-radio-button>
+
+                                                                </mat-radio-group> -->
+                                                <!-- </div> -->
+                                                <!-- </div> -->
+                                                <!-- <div class="col-3">
+                                                            <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                                                                <mat-label>Telefono de contacto</mat-label>
+                                                                <mat-icon matSuffix>phone_iphone</mat-icon>
+                                                                <input type="text" matInput formControlName="telephone">
+                                                            </mat-form-field>
+                                                        </div> -->
+                                                <button id="elId" (click)="scrollToId('elId')" type="submit" class=" ScrollUp btn btn-primary mt-1 mb-4">Ubicar en el mapa</button>
+                                            </div>
+                                            <div class="warning text-center mb-2 align-content-center">
+                                                <div>
+                                                    <mat-icon>warning </mat-icon>
+                                                </div>
+                                                <p class="text-muted">¿no aparaece tu dirección?</p>
+                                                <p class="text-muted ">Puedes arrastrar el icono y ubicarlo en la direccion exacta</p>
+
+                                            </div>
+                                        </form>
+
+                                        <!-- mapa en tamaño de escritorio-->
+                                        <section class="mb-2 pl-0 pb-3 pr-0 d-none d-sm-none d-lg-block col-12 section map-area mb-2">
+                                            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
+                                                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                                                    <agm-info-window>
+                                                        <h5>Dirección: {{address}}</h5>
+                                                        <div>Latitud: {{latitude}}</div>
+                                                        <div>Longitud: {{longitude}}</div>
+                                                    </agm-info-window>
+                                                </agm-marker>
+                                                <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="1000" [fillColor]="'orange'" [editable]="true">
+                                                </agm-circle>
+                                            </agm-map>
+                                        </section>
+
+                                        <!-- Mapa en tamaño responsive -->
+                                        <section class="d-block d-sm-block d-lg-none col-12 section map-area mt-3">
+                                            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
+                                                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                                                    <agm-info-window>
+                                                        <h5>Dirección: {{address}}</h5>
+                                                        <div>Latitud: {{latitude}}</div>
+                                                        <div>Longitud: {{longitude}}</div>
+                                                    </agm-info-window>
+                                                </agm-marker>
+                                                <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="1000" [fillColor]="'orange'" [editable]="true">
+                                                </agm-circle>
+                                            </agm-map>
+                                        </section>
+                                    </div>
+
+                                    <!-- </mat-expansion-panel>
+                                    </mat-accordion> -->
+                                </div>
+
+                                <!-- Añadir foto en tamño responsivo -->
+                                <!-- <mat-form-field appearance="outline" class="d-block d-sm-block d-md-none">
+                  <mat-label>Añadir fotos</mat-label>
+                  <ngx-mat-file-input #removableInput formControlName="multiplefile"
+                    placeholder="Selecciona multiples fotos" multiple>
+                  </ngx-mat-file-input>
+
+                  <button mat-icon-button matSuffix *ngIf="!removableInput.empty"
+                    (click)="removableInput.clear($event)">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                  <mat-icon matSuffix>photo_library</mat-icon>
+                </mat-form-field> -->
+
+
+
+
+                                <div fxLayout="column" fxLayoutAlign="center center">
+                                    <button type="button" class="btn btn-success1 btn-block" (click)="sendQuotation()">
+                    Solicitar cotización <i class="fas fa-long-arrow-alt-right"></i></button>
+                                </div>
+                            </form>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

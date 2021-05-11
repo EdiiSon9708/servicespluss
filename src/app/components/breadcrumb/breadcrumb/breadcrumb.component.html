@@ -1,0 +1,21 @@
+<section class="section breadcrumb-area bg-overlay d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Breamcrumb Content -->
+                <div class="breadcrumb-content d-flex flex-column align-items-center text-center">
+                    <h3 class="text-white text-uppercase">{{tittle}}</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/" routerLinkActive="router-link-active">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item" *ngIf="breadcrumbTittledetails === true">
+                            <a routerLink="/professional_profile" routerLinkActive="router-link-active" class="text-capitalize">Perfiles serviamigos</a>
+                        </li>
+                        <li class="breadcrumb-item text-capitalize"><a>{{breadcrumbTittle}}</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+<form fxLayout="column" [formGroup]="formAddress" (ngSubmit)="onClickAddress()">
+    <div class="row">
+        <div class="col-12">
+            <!-- Text in web -->
+            <h2 class="d-none d-sm-none d-md-block mb-5" mat-dialog-title><span class="text-muted">¿Dónde necesita el
+                    servicio?</span></h2>
+            <!-- Text in mobile -->
+            <h4 class="d-block d-sm-block d-md-none mb-2" mat-dialog-title><span class="text-muted">¿Dónde necesita el
+                    servicio?</span></h4>
+        </div>
+
+        <div class="input-field col-12 col-md-10">
+            <mat-form-field class="w-100 autocomplete-container" appearance="outline" fxFlex="100">
+                <mat-label>Buscar ubicación</mat-label>
+                <input matInput formControlName="address" matGoogleMapsAutocomplete type="text" (onAutocompleteSelected)="onAutocompleteSelected($event)" (onLocationSelected)="onLocationSelected($event)" required>
+                <mat-error>Campo obligatorio!</mat-error>
+                <mat-hint align="end">Se requiere ubicación*</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <!-- Boton en tamaño de escritorio -->
+        <div class="col-12 col-md-4 col-lg-2 d-none d-md-none d-md-block">
+            <button type="submit" class="btn btn-primary btn-block btn-css">Guardar</button>
+        </div>
+        <!-- boton en tamaño responsive -->
+        <div class="col-12 d-block d-sm-block d-md-none mb-3">
+            <button type="submit" class="btn btn-primary btn-block btn-css">Guardar</button>
+        </div>
+    </div>
+
+    <mat-dialog-content class="images-modal overflow-auto mb-0 pb-md-4">
+
+        <div #target class="row">
+            <!-- mapa en tamaño de escritorio-->
+            <section class="d-none d-sm-none d-lg-block col-12 section map-area">
+                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                        <agm-info-window>
+                            <h5>Dirección: {{address}}</h5>
+                            <div>Latitud: {{latitude}}</div>
+                            <div>Longitud: {{longitude}}</div>
+                        </agm-info-window>
+                    </agm-marker>
+                    <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="5000" [fillColor]="'orange'" [editable]="true">
+                    </agm-circle>
+                </agm-map>
+            </section>
+
+            <!-- Mapa en tamaño responsive -->
+            <section class="d-block d-sm-block d-lg-none col-12 section map-area">
+                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                        <agm-info-window>
+                            <h5>Dirección: {{address}}</h5>
+                            <div>Latitud: {{latitude}}</div>
+                            <div>Longitud: {{longitude}}</div>
+                        </agm-info-window>
+                    </agm-marker>
+                    <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="5000" [fillColor]="'orange'" [editable]="true">
+                    </agm-circle>
+                </agm-map>
+            </section>
+        </div>
+    </mat-dialog-content>
+</form>

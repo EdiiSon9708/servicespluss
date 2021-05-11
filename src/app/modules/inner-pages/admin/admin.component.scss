@@ -1,0 +1,28 @@
+.bg-danger {
+    background-color: #f44336!important;
+}
+
+::ng-deep .mat-tab-label:focus {
+    border-radius: 30px!important;
+    background: #035aa6!important;
+    color: #fff!important;
+    visibility: visible!important;
+    animation-duration: 2s!important;
+    animation-delay: 300ms!important;
+    animation-iteration-count: infinite!important;
+    animation-name: pulse!important;
+}
+
+::ng-deep .mat-ink-bar {
+    display: none;
+}
+
+::ng-deep .mat-tab-label-container {
+    margin-bottom: 10px;
+    padding-left: 1%;
+}
+
+.mx-md-5 {
+    margin-left: 270px!important;
+    margin-right: 270px!important;
+}

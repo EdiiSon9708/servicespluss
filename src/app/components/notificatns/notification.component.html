@@ -1,0 +1,342 @@
+<section class="overflow-hidden mt-4">
+    <div class="row mb-5">
+
+        <!-- boton seleccionar todo  -->
+
+        <div class="col-12 mb-sm-0 mb-md-3 pl-0 border-bottom">
+            <label class="col-7 col-md-3 pr-0">
+                <input type="checkbox" /><span>
+                    <p class="select-all text-muted mb-2">Seleccionar todo</p>
+                </span>
+            </label>
+
+            <div class="col-5 col-md-1 d-inline left-1">
+                <a routerLink="/admin"><i class="far fa-trash-alt fa-2x"></i></a>
+            </div>
+
+            <!-- barra de busqueda en tamaño de escritorio -->
+
+            <div class="col-12 col-md-5 d-md-inline-block ml-sm-0 ml-md-5 left-0 d-none d-sm-none">
+                <mat-form-field class="w-100" fxFlex="100">
+                    <mat-label>Buscar mensaje</mat-label>
+                    <input matInput type="text" [(ngModel)]="value">
+                    <button mat-button *ngIf="value" matSuffix mat-icon-button (click)="value=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+
+            <!-- barra de busqueda en tamaño responsive -->
+
+            <div class="col-12 col-md-5 d-inline-block ml-sm-0 ml-md-5 d-sm-inline-block d-md-none">
+                <mat-form-field class="w-100" fxFlex="100">
+                    <mat-label>Buscar mensaje</mat-label>
+                    <input matInput type="text" [(ngModel)]="value">
+                    <button mat-button *ngIf="value" matSuffix mat-icon-button (click)="value=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Mis notificaciones -->
+
+        <div class="col-sm-12 col-md-5 pl-0 pr-0 overflow-auto max-height">
+
+            <div class="list-group" *ngIf="onOpen">
+
+                <label class="col-2 m-0">
+                    <input type="checkbox" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action"
+                    data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Alicia Brother</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+                <label class="col-2">
+                    <input type="checkbox" value="two" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action" data-toggle="list" href="#list-profile"
+                    role="tab" aria-controls="profile"> <input class="checkbox" type="checkbox" />
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+                <label class="col-2">
+                    <input type="checkbox" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                    href="#list-messages" role="tab" aria-controls="messages"> <input class="checkbox"
+                        type="checkbox" />
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+                <label class="col-2">
+                    <input type="checkbox" name="checkbox" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="settings"> <input class="checkbox"
+                        type="checkbox" />
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+                <label class="col-2">
+                    <input type="checkbox" name="checkbox" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="settings"> <input class="checkbox"
+                        type="checkbox" />
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+                <label class="col-2">
+                    <input type="checkbox" name="checkbox" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="settings"> <input class="checkbox"
+                        type="checkbox" />
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+                <label class="col-2">
+                    <input type="checkbox" name="checkbox" /><span></span>
+                </label>
+
+                <div class="col-10 list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                    href="#list-settings" role="tab" aria-controls="settings"> <input class="checkbox"
+                        type="checkbox" />
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>Hace 3 dias</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam
+                        eget
+                        risus
+                        varius blandit.</p>
+                </div>
+
+            </div>
+        </div>
+
+<!-- detalles de notificaciones -->
+
+        <div class="tab-content col-12 col-md-7">
+
+            <!-- vista de activa -->
+
+            <div class="tab-pane overflow-auto p-3 active align-items-center justify-content-center m-100">
+                <div class="text-center">
+                    <i class="far fa-envelope fa-5x"></i>
+                    <h3 class="font-weight-normal text-muted">Seleccione mensaje para leer</h3>
+                </div>
+            </div>
+
+            <!-- vistas de detalles de mensajes y/o notificaciones-->
+
+            <div class="tab-pane p-3" id="list-home">
+                <div class="d-flex mb-2 w-100 justify-content-between">
+                    <h5 class="mb-1">Notificaciones recientes</h5>
+                    <small>28/08/2020</small>
+                </div>
+                <div class="border-bottom pb-3">
+                    <img src="https://via.placeholder.com/450X600?text=600x600" class="rounded-circle " alt="">
+                    <h5 class="d-inline-block pl-2">Manolo perez</h5>
+                </div>
+                <div class="pt-3 overflow-auto max-height-2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perspiciatis, aliquid maxime
+                        sit atque inventore id accusantium at.
+                    </p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta consequuntur ut autem quis
+                        deleniti, sit itaque, ullam veritatis</p>
+                </div>
+            </div>
+
+            <div class="tab-pane px-3 py-0" id="list-profile">
+                <div class="d-flex my-2 w-100 justify-content-between">
+                    <h5 class="mb-1">Notificaciones recientes</h5>
+                    <small>28/08/2020</small>
+                </div>
+                <div class="border-bottom pb-3">
+                    <img src="https://via.placeholder.com/450X600?text=600x600" class="rounded-circle " alt="">
+                    <h5 class="d-inline-block pl-2">Alicia answer</h5>
+                </div>
+                <div class="pt-3 overflow-auto max-height-2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perspiciatis, aliquid maxime
+                        sit atque inventore id accusantium at, est voluptates, recusandae quidem porro molestiae dolorum
+                        repudiandae incidunt architecto culpa. Cum, labore fuga obcaecati perferendis tempore amet
+                        neque, accusantium ipsam vero sed et aliquid autem delectus ipsa vitae harum minima aspernatur!
+                    </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque repellat temporibus blanditiis
+                        quisquam beatae possimus. Aliquid, repudiandae eum eius optio voluptatum dolorum aliquam
+                        voluptatibus aspernatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aliquam fugit ducimus inventore
+                        maiores esse, repellat quibusdam veritatis necessitatibus quasi totam sint est repellendus,
+                        reprehenderit iure, sequi dolorum exercitationem temporibus?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta consequuntur ut autem quis
+                        deleniti, sit itaque, ullam veritatis illum laudantium beatae molestias quae aspernatur ipsum
+                        dolorem minima voluptate animi modi quibusdam inventore magnam eveniet quisquam! Deleniti
+                        dolore, praesentium doloribus fugiat sapiente similique adipisci molestias, suscipit repellat
+                        voluptates magni nobis debitis sit facilis ea voluptatum animi dolorum dignissimos neque! Sint
+                        fugiat eaque corrupti quidem perferendis, magni provident odit quos aliquam. Saepe, quas
+                        officia. Qui aut, iure rem animi impedit provident distinctio commodi suscipit ex dolores
+                        accusantium necessitatibus fugit culpa obcaecati odio reprehenderit aliquam iste mollitia quidem
+                        ipsam! Blanditiis ipsam autem pariatur velit iure corrupti placeat esse mollitia ducimus rem
+                        officia sunt officiis eveniet quasi, rerum laboriosam, at odit cum ab maiores! Facilis nobis
+                        quia ducimus inventore laudantium modi velit voluptatum reprehenderit neque cumque repudiandae
+                        in alias, esse quas labore, tempora minima? Quia repellendus delectus ipsam assumenda cumque,
+                        voluptate id accusantium, fuga provident soluta, quibusdam harum distinctio sit? Sequi, tempora
+                        consequatur? Omnis cum minima</p>
+                </div>
+            </div>
+
+            <div class="tab-pane px-3 py-0" id="list-messages">
+                <div class="d-flex my-2 w-100 justify-content-between">
+                    <h5 class="mb-1">Notificaciones recientes</h5>
+                    <small>28/08/2020</small>
+                </div>
+                <div class="border-bottom pb-3">
+                    <img src="https://via.placeholder.com/450X600?text=600x600" class="rounded-circle " alt="">
+                    <h5 class="d-inline-block pl-2">Sofia Lugo</h5>
+                </div>
+                <div class="pt-3 overflow-auto max-height-2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perspiciatis, aliquid maxime
+                        sit atque inventore id accusantium at, est voluptates, recusandae quidem porro molestiae dolorum
+                        repudiandae incidunt architecto culpa. Cum, labore fuga obcaecati perferendis tempore amet
+                        neque, accusantium ipsam vero sed et aliquid autem delectus ipsa vitae harum minima aspernatur!
+                    </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque repellat temporibus blanditiis
+                        quisquam beatae possimus. Aliquid, repudiandae eum eius optio voluptatum dolorum aliquam
+                        voluptatibus aspernatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aliquam fugit ducimus inventore
+                        maiores esse, repellat quibusdam veritatis necessitatibus quasi totam sint est repellendus,
+                        reprehenderit iure, sequi dolorum exercitationem temporibus?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta consequuntur ut autem quis
+                        deleniti, sit itaque, ullam veritatis illum laudantium beatae molestias quae aspernatur ipsum
+                        dolorem minima voluptate animi modi quibusdam inventore magnam eveniet quisquam! Deleniti
+                        dolore, praesentium doloribus fugiat sapiente similique adipisci molestias, suscipit repellat
+                        voluptates magni nobis debitis sit facilis ea voluptatum animi dolorum dignissimos neque! Sint
+                        fugiat eaque corrupti quidem perferendis, magni provident odit quos aliquam. Saepe, quas
+                        officia. Qui aut, iure rem animi impedit provident distinctio commodi suscipit ex dolores
+                        accusantium necessitatibus fugit culpa obcaecati odio reprehenderit aliquam iste mollitia quidem
+                        ipsam! Blanditiis ipsam autem pariatur velit iure corrupti placeat esse mollitia ducimus rem
+                        officia sunt officiis eveniet quasi, rerum laboriosam, at odit cum ab maiores! Facilis nobis
+                        quia ducimus inventore laudantium modi velit voluptatum reprehenderit neque cumque repudiandae
+                        in alias, esse quas labore, tempora minima? Quia repellendus delectus ipsam assumenda cumque,
+                        voluptate id accusantium, fuga provident soluta, quibusdam harum distinctio sit? Sequi, tempora
+                        consequatur? Omnis cum minima</p>
+                </div>
+            </div>
+
+            <div class="tab-pane px-3 py-0" id="list-settings">
+                <div class="d-flex my-2 w-100 justify-content-between">
+                    <h5 class="mb-1">Notificaciones recientes</h5>
+                    <small>28/08/2020</small>
+                </div>
+                <div class="border-bottom pb-3">
+                    <img src="https://via.placeholder.com/450X600?text=600x600" class="rounded-circle " alt="">
+                    <h5 class="d-inline-block pl-2">Carlos name</h5>
+                </div>
+                <div class="pt-3 overflow-auto max-height-2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti perspiciatis, aliquid maxime
+                        sit atque inventore id accusantium at, est voluptates, recusandae quidem porro molestiae dolorum
+                        repudiandae incidunt architecto culpa. Cum, labore fuga obcaecati perferendis tempore amet
+                        neque, accusantium ipsam vero sed et aliquid autem delectus ipsa vitae harum minima aspernatur!
+                    </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque repellat temporibus blanditiis
+                        quisquam beatae possimus. Aliquid, repudiandae eum eius optio voluptatum dolorum aliquam
+                        voluptatibus aspernatur.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aliquam fugit ducimus inventore
+                        maiores esse, repellat quibusdam veritatis necessitatibus quasi totam sint est repellendus,
+                        reprehenderit iure, sequi dolorum exercitationem temporibus?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta consequuntur ut autem quis
+                        deleniti, sit itaque, ullam veritatis illum laudantium beatae molestias quae aspernatur ipsum
+                        dolorem minima voluptate animi modi quibusdam inventore magnam eveniet quisquam! Deleniti
+                        dolore, praesentium doloribus fugiat sapiente similique adipisci molestias, suscipit repellat
+                        voluptates magni nobis debitis sit facilis ea voluptatum animi dolorum dignissimos neque! Sint
+                        fugiat eaque corrupti quidem perferendis, magni provident odit quos aliquam. Saepe, quas
+                        officia. Qui aut, iure rem animi impedit provident distinctio commodi suscipit ex dolores
+                        accusantium necessitatibus fugit culpa obcaecati odio reprehenderit aliquam iste mollitia quidem
+                        ipsam! Blanditiis ipsam autem pariatur velit iure corrupti placeat esse mollitia ducimus rem
+                        officia sunt officiis eveniet quasi, rerum laboriosam, at odit cum ab maiores! Facilis nobis
+                        quia ducimus inventore laudantium modi velit voluptatum reprehenderit neque cumque repudiandae
+                        in alias, esse quas labore, tempora minima? Quia repellendus delectus ipsam assumenda cumque,
+                        voluptate id accusantium, fuga provident soluta, quibusdam harum distinctio sit? Sequi, tempora
+                        consequatur? Omnis cum minima</p>
+                </div>
+            </div>
+            <!-- modulo de responde mensajes en tamaño escritorio -->
+            <form class="pt-2 position-absolute w-100 reply-msj d-none d-sm-none d-md-flex">
+                <div class="col-9 p-0 sendContentContainer">
+                    <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                        <mat-label>Responder mensaje</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-3 p-0 sendButtonContainer">
+                    <button type="button"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+
+            <!-- modulo de responde mensajes en tamaño responsive -->
+            <form class="pt-4 d-flex d-sm-flex d-md-none">
+                <div class="sendContentContainer">
+                    <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                        <mat-label>Responder mensaje</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div class="sendButtonContainer">
+                    <button type="button"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

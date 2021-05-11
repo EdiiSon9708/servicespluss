@@ -1,0 +1,226 @@
+<div class="container-fluid mb-5">
+    <form [formGroup]="profileUser" (ngSubmit)="onSubmitProfile()">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h2 class=" text-muted text-uppercase">Perfil</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 mt-3">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Primer Nombre (*)</mat-label>
+                    <input type="text" matInput formControlName="nombres1">
+                </mat-form-field>
+            </div>
+            <div class="col-6 mt-3">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Segundo Nombre(*)</mat-label>
+                    <input type="text" matInput formControlName="nombre2">
+                </mat-form-field>
+            </div>
+            <div class="col-6 mt-3">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Primer Apellido(*)</mat-label>
+                    <input type="text" matInput formControlName="apellido1">
+                </mat-form-field>
+            </div>
+            <div class="col-6 mt-3">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Segundo Apellido(*)</mat-label>
+                    <input type="text" matInput formControlName="apellido2">
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" fxFlex="100" class="">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label class="p-2%">Tipo de documento(*)</mat-label>
+                    <mat-select formControlName="IdTipoDocumento">
+                        <mat-option>Seleccionar tipo de documento</mat-option>
+                        <mat-option *ngFor="let type of TypeDocuments" [value]="type.conse_param">
+                            {{type.desc_param}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Numero de documento(*)</mat-label>
+                    <input type="num" matInput formControlName="documento">
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" fxFlex="100" class="">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label class="p-2%">Género(*)</mat-label>
+                    <mat-select formControlName="genero">
+                        <mat-option>Seleccionar genero</mat-option>
+                        <mat-option *ngFor="let gender of Gender" [value]="gender.conse_param">
+                            {{gender.desc_param}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="col-12 col-md-3">
+                <mat-form-field appearance="outline" fxFlex="100" class="">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label class="p-2%">Día de cumpleaños(*)</mat-label>
+                    <mat-select formControlName="dayBirth">
+                        <mat-option>Seleccionar dia cumpleaños</mat-option>
+                        <mat-option *ngFor="let day of jsonday" [value]="day.number">{{day.number}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <mat-form-field appearance="outline" fxFlex="100" class="">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label class="p-2%">Mes de cumpleaños(*)</mat-label>
+                    <mat-select formControlName="monthBirth">
+                        <mat-option>Seleccionar mes cumpleaños</mat-option>
+                        <mat-option *ngFor="let date of jsondates" [value]="date.id">
+                            {{date.mes}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+
+            <div class="col-12 col-md-5">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Direccion completa</mat-label>
+                    <input type="text" matInput formControlName="address">
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <mat-form-field appearance="outline" fxFlex="100" class="">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label class="p-2%">Departamento</mat-label>
+                    <mat-select formControlName="nDepto" (click)="getArrayDepartament()">
+                        <mat-option>Seleccionar departamento</mat-option>
+                        <mat-option *ngFor="let depto of departaments" [value]="depto.IdDepartamento" (click)="getCitiesArray(depto.IdDepartamento)">
+                            {{depto.Nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <mat-form-field appearance="outline" fxFlex="100" class="">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label class="p-2%">Ciudad</mat-label>
+                    <mat-select formControlName="nciudad">
+
+                        <!-- <mat-option value="Bogotá">Bogotá</mat-option>
+                        <mat-option value="Cali">Cali</mat-option>
+                        <mat-option value="	Barranquilla"> Barranquilla</mat-option>
+                        <mat-option value="	Cartagena"> Cartagena</mat-option>
+                        <mat-option value="	Bucaramanga"> Bucaramanga</mat-option>
+                        <mat-option value="	Meta"> Meta</mat-option> -->
+
+                        <mat-option>Seleccionar ciudad</mat-option>
+                        <mat-option *ngFor="let city of cities" [value]="city.IdCiudad">
+                            {{city.Nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="col-12 col-md-1 text-center d-none d-sm-none d-md-block">
+                <button mat-fab class="btn-success" tooltip="Agregar" placement="auto">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div> -->
+            <!-- boton flotante responsive -->
+            <!-- <div class="col-12 col-md-1 text-center d-block d-sm-block d-md-none mb-4">
+                <button mat-fab class="btn-success">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div> -->
+            <div class="col-md-4 col-12 mt-1">
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha Nacimiento</mat-label>
+                    <!-- #docregion toggle -->
+                    <input matInput [matDatepicker]="picker" formControlName="f_nacimiento">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>Fecha Nacimiento obligatorio!</mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="col-12">
+                <div class="datatable">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-hover table-responsive" cellspacing="0" aria-describedby="dataTable_info">
+                                <thead class="card-header">
+                                    <tr>
+                                        <th class="w-18 text-muted">Dirección</th>
+                                        <th class="w-18 text-muted">Departamento</th>
+                                        <th class="w-18 text-muted">Municipio</th>
+                                        <th class="w-18 text-muted">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd">
+                                        <td class="text-muted">Calle falsa 123</td>
+                                        <td class="text-muted">Cundinamarca</td>
+                                        <td class="text-muted">Mosquera</td>
+                                        <td class="text-muted">
+                                            <div class="text-center">
+                                                <a href="javascript:;"><i class="fas fa-trash-alt"></i></a>
+                                            </div>
+                                            <div></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-12 col-md-4">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-label>Teléfono(*)</mat-label>
+                    <input type="text" matInput formControlName="telefono">
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-label>Telefono 2</mat-label>
+                    <input type="text" matInput formControlName="telefono2">
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-label>Celular</mat-label>
+                    <input type="text" matInput formControlName="Celular">
+                </mat-form-field>
+            </div>
+
+            <div class="col-12">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-icon matSuffix>edit</mat-icon>
+                    <mat-label>Correo electronico(*)</mat-label>
+                    <input type="text" matInput formControlName="email" readonly>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-12 text-right">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="profileUser.invalid">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.color-yellow{
+    color: yellow;
+}
+
+input[type="radio"] {
+    display: none;
+}
+  
+p {
+    text-align: initial;
+}
+  
+label {
+    color: #e2e3e5;
+    cursor: pointer;
+}
+  
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+  
+label:hover,
+label:hover ~ label {
+    color: #f17304;
+}
+  
+input[type="radio"]:checked ~ label {
+    color: #f17304;
+}
+
+.btn-bordered-1 {
+  background: #035aa6;
+}
+
+.btn-bordered-2 {
+  background:#747474 ;
+}
+
+.botones-align {
+    text-align: end;
+}

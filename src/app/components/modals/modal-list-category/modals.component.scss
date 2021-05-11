@@ -1,0 +1,23 @@
+.row .card-1 > img {
+    width: 100%;
+    height: 70%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    z-index: 0;
+    padding: 10px;
+    position: relative;
+}
+
+.text-title {
+    z-index: 1;
+    position: relative;
+}
+
+.circle {
+    height: 94% !important;
+    width: 91% !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    top: 0.28125em;
+}

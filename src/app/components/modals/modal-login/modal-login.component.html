@@ -1,0 +1,21 @@
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid text-center text-danger mt-4">
+        <i class="far fa-times-circle fa-6x"></i>
+    </div>
+    <div class="container-fluid text-center mt-4">
+        <h2>Oops...</h2>
+    </div>
+
+    <div class="container-fluid mt-4">
+        <div class="alert alert-danger" role="alert">
+            <ul *ngFor="let item of resp">
+                <li *ngIf="item.name">{{item.name}}</li>
+                <li *ngIf="item.email">{{item.email}}</li>
+                <li *ngIf="item.password">{{item.password}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid text-center mt-4">
+        <button type="button" class="btn btn-primary" mat-button mat-dialog-close>Cerrar</button>
+    </div>
+</mat-dialog-content>

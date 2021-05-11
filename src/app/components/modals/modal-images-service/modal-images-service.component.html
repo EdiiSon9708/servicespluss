@@ -1,0 +1,38 @@
+<!-- Tittle in web -->
+<h3 class="d-none d-sm-none d-md-block" mat-dialog-title><span class="text-muted">Fotos Servicio {{idServicio}}</span></h3>
+<!-- Tittle in responsive -->
+<h3 class="d-block d-sm-block d-md-none pb-3" mat-dialog-title><span class="text-muted">Fotos Servicio {{idServicio}}</span></h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="input-field col-12">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-content class="images-modal">
+    <div class="row p-2">
+        <div class="row justify-content-center align-items-center mt-5">
+            <!-- {{files.length}} -->
+
+            <carousel>
+                <slide class="image-service col-12 position-relative image-fit " *ngFor="let file of fotosService">
+                    <img [src]="file.fotoServicio" alt="first slide" style="display: block; width: 100%;">
+                </slide>
+            </carousel>
+
+            <!-- 
+            <div *ngFor="let file of fotosService" class=" col-12 col-md-4 file w-24 h-24 position-relative image-fit mb-5 mr-5">
+                <img class="rounded" alt="Midone Tailwind HTML Admin Template" [src]="file.fotoServicio"> -->
+            <!-- <div class="w-5 h-5 p-1 d-flex bg-danger  align-items-center justify-content-center position-absolute rounded-full  cursor-pointer text-white remove-file " (click)="removeFile(file.id)"><span>x</span></div> -->
+            <!-- </div> -->
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close><span class="text-muted">Cerrar</span></button>
+</mat-dialog-actions>

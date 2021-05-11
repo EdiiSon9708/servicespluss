@@ -1,0 +1,20 @@
+<section class="section cta-area overlay-white overflow-hidden p-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4" *ngFor="let item of analitics">
+                <!-- Icon Box -->
+                <div class="icon-box text-center p-3">
+                    <!-- cta Icon -->
+                    <div class="featured-icon mb-3">
+                        <span class=""><i class="fas {{item.icon}} fa-5x text-muted"></i></span>
+                    </div>
+                    <!-- Icon Text -->
+                    <div class="icon-text">
+                        <h3 class="mb-2 text-muted">{{item.data}}</h3>
+                        <p>{{item.text}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

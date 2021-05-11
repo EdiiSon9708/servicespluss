@@ -1,0 +1,26 @@
+<div class="inner error-page inner-pages">
+    <div class="main">
+        <section id="home" class="section welcome-area bg-overlay  align-items-center">
+            <div class="container">
+                <div class="row  justify-content-center">
+                    <!-- pregunta de registro -->
+
+                    <div class="col-12 col-md-8 col-lg-5" *ngIf="!viewOption">
+                        <div class="contact-box bg-white text-center rounded p-4 p-sm-5 mt-8 mt-lg-0 shadow-lg">
+                            <div class="contact-top">
+                                <h3 class="contact-title text-secondary fw-3 py-3">¡Hola! Para crear un servicio, ingresa a tu cuenta</h3>
+                            </div>
+                            <button (click)="viewSelectOption(true,1)" type="submit" class="btn btn-bordered w-100 mt-3 mt-sm-4">Soy Nuevo</button>
+                            <button (click)="viewSelectOption(true,0)" type="submit" class="btn btn-single w-100 mt-3 mt-sm-4">Ingresar</button>
+                        </div>
+                    </div>
+                    <!-- Iniciar sesion -->
+                    <div class="col-12 col-md-8 col-lg-5" *ngIf="viewOption">
+                        <app-login [selectedFormAuthentic]="viewSelectLogin">
+                        </app-login>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

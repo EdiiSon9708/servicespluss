@@ -1,0 +1,91 @@
+$blue: #035aa6;
+$orange: #f17304;
+$bg-gray: #e2e3e5;
+$text-gray: #747474;
+$blue-ligth: #cce5ff;
+.tarjet {
+    height: 80%!important;
+}
+
+.bg-danger,
+.alert-danger {
+    background: $orange !important;
+    color: #fff;
+}
+
+.bg-success {
+    background-color: $blue !important;
+    color: $blue-ligth !important;
+}
+
+.bg-default {
+    background-color: $bg-gray !important;
+    color: $text-gray !important;
+}
+
+.bg-warning {
+    background-color: $text-gray !important;
+    color: $bg-gray;
+}
+
+.bg-cancel {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+}
+
+// .pagination {
+//     a {
+//         color: white!important;
+//     }
+// }
+.position-absolute {
+    right: 30px;
+    font-size: 20px;
+}
+
+.position-absolute:hover,
+:focus {
+    text-decoration: underline !important;
+}
+
+.car {
+    box-shadow: 5px 5px 10px rgb(105, 100, 100);
+    max-width: 238px;
+    height: 153px;
+    background-color: #FFFFFF;
+    // border: 1px solid red;
+    width: 100%;
+    margin: 15px;
+    border-radius: 10px;
+    h3 {
+        font-size: 1.5em!important;
+    }
+    .info-tarjeta {
+        // border: 1px solid blue;
+        .carrito {
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #1C3FAA!important;
+        }
+        .porcentaje {
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #91C715;
+            padding: 0px;
+            color: white;
+        }
+    }
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    top: 0.28125em;
+}
+
+.carousel-item {
+    margin-right: 0;
+}
+
+.fs-2 {
+    font-size: 2em;
+}

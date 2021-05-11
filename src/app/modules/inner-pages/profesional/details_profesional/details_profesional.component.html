@@ -1,0 +1,236 @@
+<div class="blog">
+  <div class="main">
+    <app-breadcrumb [tittle]="tittle" [breadcrumbTittle]="breadcrumbTittle" [breadcrumbTittledetails]="true">
+    </app-breadcrumb>
+    <section id="blog" class="section blog-area ptb_100">
+      <div class="container">
+        <div class="row" *ngFor="let details of detailProfessional">
+          <div class="col-12 col-lg-3">
+            <aside class="sidebar">
+              <!-- Single Widget -->
+              <div class="single-widget">
+                <!-- Category Widget -->
+                <div class="accordions widget catagory-widget" id="cat-accordion">
+                  <div class="single-accordion blog-accordion">
+                    <h5>
+                      <a role="button" class="collapse show text-uppercase d-block p-3 text-muted"
+                        data-toggle="collapse" href="#accordion1">Categorías profesional
+                      </a>
+                    </h5>
+
+                    <div class="accordion-content widget-content collapse show" data-parent="#cat-accordion"
+                      id="accordionExample">
+
+                      <div [attr.id]="'accordion_' + i"  *ngFor="let categoria of details.categoria; let i= index;">
+                        <ul class="widget-items" id="headingOne">
+                          <li>
+                            <a role="button" class="d-flex p-3" data-toggle="collapse"
+                              [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i"
+                              aria-expanded="false" aria-controls="collapseOne">
+                              <span class="text-muted">{{categoria.nombre_catg}}</span>
+                              <span class="ml-auto text-muted">({{categoria.categorias_sub_categorias.length}})</span>
+                            </a>
+                          </li>
+                        </ul>
+                        <div [attr.id]="'collapseOne_' + i" class="collapse" aria-labelledby="headingOne"
+                          data-parent="#accordionExample">
+                          <div class="card-body p-2">
+                            <ul class="widget-items" *ngFor="let subCategoria of categoria.categorias_sub_categorias">
+                              <li>
+                                <a class="d-flex p-1 text-muted">{{subCategoria.nombre_scatg}}</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Single Widget -->
+              <div class="single-widget">
+                <!-- Post Widget -->
+                <div class="accordions widget post-widget" id="post-accordion">
+                  <div class="single-accordion">
+                    <h5>
+                      <a role="button" class="collapse show text-uppercase d-block p-3 text-muted"
+                        data-toggle="collapse" role="dialog">Profesionales recientes
+                      </a>
+                    </h5>
+                    <!-- Post Widget Content -->
+                    <div id="accordion2" class="accordion-content widget-content collapse show mb-4 mb-md-0"
+                      data-parent="#post-accordion">
+                      <!-- Post Widget Items -->
+                      <ul class="widget-items">
+                        <li *ngFor="let professional of listProfessional">
+                          <a role="button" (click)="realodPage(professional.IdProfessional)"
+                            class="single-post align-items-center align-items-lg-start media p-3">
+                            <!-- Post Thumb -->
+                            <div class="post-thumb avatar-md">
+                              <img class="rounded-circle" [src]="professional.fotoProfesional"
+                                [alt]="">
+                            </div>
+                            <div class="post-content media-body text-left pl-3">
+                              <p class="post-date mb-2 text-muted">
+                                {{professional.FCreaProfessional | date :' dd MMM yyy'}}
+                              </p>
+                              <h6 class="text-muted">{{professional.nombreProfessional}}
+                              </h6>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="col-12 col-lg-9">
+            <!-- Single Blog Details -->
+            <article class="single-blog-details">
+              <!-- Blog Thumb -->
+              <carousel>
+                <ng-container *ngIf="details.fotosProtafolio.length > 0;else noAvailable">
+                  <slide *ngFor="let fotos of details.fotosProtafolio">
+                    <img class="style-image" [src]="fotos.img_fpf" [alt]="fotos.img_fpf">
+                  </slide>
+                </ng-container>
+
+                <ng-template #noAvailable>
+                  <slide>
+                    <img src="https://via.placeholder.com/900x900.png?text=No hay imagen disponible" class="style-image"
+                      alt="No image available">
+                  </slide>
+                </ng-template>
+              </carousel>
+
+              <!-- Blog Content -->
+              <div class="blog-content prolend-blog">
+                <!-- Meta Info -->
+                <div class="meta-info d-flex flex-wrap align-items-center py-2">
+                  <ul>
+                    <li class="d-inline-block p-2">
+                      <p class="text-muted">{{details.nombreProfessional}}</p>
+                    </li>
+                    <li class="d-inline-block p-2">
+                      <p class="text-muted">{{details.FCreaProfessional | date :' dd MMMM yyy'}}
+                      </p>
+                    </li>
+                    <li class="d-inline-block p-2">
+                      <p class="text-muted">{{details.totServicios || 0}} Servicios</p>
+                    </li>
+
+                    <li class="d-inline-block text-right p-2">
+                      <span *ngFor="let fullStar of fullStarsUnique" class="fas fa-star checked"></span>
+                      <span *ngFor="let emptyStar of emptyStarsUnique" class="far fa-star emptyStar"></span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Blog Details -->
+                <div class="blog-details text-left">
+                  <h2 class="blog-title py-2 py-sm-3 text-muted">Descripción del profesional</h2>
+                  <p class="d-none d-sm-block text-muted">{{details.descripcion}}</p>
+                  <p class="d-block d-sm-none text-muted">{{details.descripcion}}</p>
+                </div>
+              </div>
+              <!-- Blog Comments -->
+              <div class="blog-comments col-md-12 px-0">
+                <!-- Comments -->
+                <div class="comments my-3">
+                  <!-- Comments Title -->
+                  <h3 class="comments-title text-uppercase text-right mb-3 text-muted">Comentarios
+                  </h3>
+                  <!-- Single Comments -->
+                  <div class="py-3" *ngIf="details.dataTestimonio.length === 0">
+                    <div class="alert alert-primary" role="alert">
+                      No existen comentarios creados
+                    </div>
+                  </div>
+                  <div class="single-comments media py-3 pl-0 pr-3 py-lg-4 pl-lg-0 pr-lg-4"
+                    *ngFor="let comments of details.dataTestimonio">
+                    <!-- Comments Thumb -->
+                    <div class="comments-thumb avatar-lg text-center">
+                      <img *ngIf="comments.fotoTestimonio !== null;else imagen" [src]="comments.fotoTestimonio"
+                        [alt]="comments.nombreTestimonio" class="rounded-circle images">
+                      <div class="pt-2">
+                        <span *ngFor="let fullStar of comments.fullStars" class="fas fa-star checked"></span>
+                        <span *ngFor="let emptyStar of comments.emptyStars" class="far fa-star emptyStar"></span>
+                      </div>
+                    </div>
+                    <ng-template #imagen>
+                      <img src="https://ui-avatars.com/api/?size=100&name={{comments.nombreTestimonio}}"
+                        class="rounded-circle images" [alt]="comments.nombreTestimonio">
+                    </ng-template>
+                    <!-- Comments Content -->
+                    <div class="comments-content media-body col-md-12">
+                      <div class="row">
+                        <div class="col-md-9 col-sm-12 text-left">
+                          <div class="mb-2">
+                            <h4 class="text-muted">{{comments.nombreTestimonio}}</h4>
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                          <div class="mb-2 text-right">
+                            <small>{{comments.fecha_bg | date :' dd MMMM yyy' }}</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- comentarios en tamaño de escritorio -->
+                      <p class="d-none d-sm-none d-md-block text-muted">{{comments.comentario_bg}}
+                      </p>
+                      <!-- comentarios en tamaño responsive -->
+                      <p class="pl-0 overflow-auto comments-sm text-truncate d-block d-sm-block d-md-none text-muted">
+                        {{comments.comentario_bg}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Blog Contact -->
+              <div class="blog-contact mt-4">
+                <!-- Comment Box -->
+                <div class="contact-box comment-box">
+                  <form [formGroup]="commentsForm" (ngSubmit)="onsubmitComment()">
+                    <div class="row">
+                      <div class="col-md-12 px-3" *ngIf="dataUser">
+                        <div class="text-right">
+                          <p class="calificacion">
+                            <input id="radio1" type="radio" value="5" formControlName="calificationComment">
+                            <label for="radio1"><i class="fas fa-star fa-2x"></i></label>
+                            <input id="radio2" type="radio" value="4" formControlName="calificationComment">
+                            <label for="radio2"><i class="fas fa-star fa-2x"></i></label>
+                            <input id="radio3" type="radio" value="3" formControlName="calificationComment">
+                            <label for="radio3"><i class="fas fa-star fa-2x"></i></label>
+                            <input id="radio4" type="radio" value="2" formControlName="calificationComment">
+                            <label for="radio4"><i class="fas fa-star fa-2x"></i></label>
+                            <input id="radio5" type="radio" value="1" formControlName="calificationComment">
+                            <label for="radio5"><i class="fas fa-star fa-2x"></i></label>
+                          </p>
+                        </div>
+
+                        <mat-form-field appearance="outline" fxFlex="100" class="w-100">
+                          <mat-icon matSuffix>create</mat-icon>
+                          <mat-label>Mensaje</mat-label>
+                          <textarea matInput formControlName="messageComment" rows="4"></textarea>
+                          <mat-error>Campo obligatorio!</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 text-right">
+                        <button class="text-align-end btn btn-bordered" type="submit">Enviar
+                          mensaje</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<app-footer-one></app-footer-one>

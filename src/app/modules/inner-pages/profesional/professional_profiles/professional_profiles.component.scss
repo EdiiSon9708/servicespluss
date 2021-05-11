@@ -1,0 +1,20 @@
+.ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.alert-danger {
+    background-color: #f17304;
+    color: white;
+}
+
+.checked, .emptyStar {
+    color: #f17304 !important;
+}
+
+.cursor:hover {
+    cursor: pointer;
+}

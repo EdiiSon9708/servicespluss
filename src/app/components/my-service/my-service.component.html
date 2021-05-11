@@ -1,0 +1,196 @@
+<ng-container *ngIf="countServices">
+    <!-- Cards con informacion sobre estado de servicios escritorio-->
+
+    <carousel [showIndicators]="false" [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="true" [interval]="false" [indicatorsByChunk]="true" [noWrap]="true" class="d-none d-sm-none d-md-block">
+        <!-- <slide *ngFor="let item of countServices" class="mx-2"> -->
+        <div class="car mb-4 " *ngFor="let item of countServices; ">
+            <div class="info-tarjeta d-flex justify-content-between p-3 ">
+                <div class="carrito ">
+                    <i class="fas fa-cogs "></i>
+                </div>
+                <div class="porcentaje text-white rounded-pill pl-2 pr-2 d-flex justify-content-center align-item-center " [ngClass]="{ 'bg-danger': item.id===1 , 'bg-success': item.id===2 , 'bg-default': item.id===3 , 'bg-dark': item.id===4 ,
+                'bg-cancel': item.id===5 } ">
+                    <p class="mr-2 text-white ">{{item.counter}}</p><i class="mt-1 fas fa-angle-up "></i></div>
+            </div>
+            <div class="p-3 ">
+                <h3>{{item.name}}</h3>
+            </div>
+            <div></div>
+        </div>
+        <!-- <div class="card tarjet text-white my-3 " [ngClass]="{ 'bg-danger': item.id===1 , 'bg-warning': item.id===2 , 'bg-default': item.id===3 , 'bg-success': item.id===4 , 'bg-cancel': item.id===5 } ">
+                <div class="card-body ">
+                    <div class="row ">
+                        <div class="col-sm-12 col-md-7 ">
+                            <span class="h5 ">{{item.name}}</span>
+                            <div class="text-white-75 h4 ">{{item.counter}}</div>
+                        </div>
+                        <div class="col-sm-12 col-md-5 ">
+                            <i class="fas fa-cogs fa-4x "></i>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        <!-- </slide> -->
+    </carousel>
+
+    <!-- Cards con informacion sobre estado de servicios mobile -->
+    <!-- <carousel [showIndicators]="false " [itemsPerSlide]="itemsPerSlideSmall " [singleSlideOffset]="true " [interval]="false " [indicatorsByChunk]="true " [noWrap]="true " class="d-block d-sm-block d-md-none ">
+        <slide *ngFor="let item of countServices " class="mx-1 ">
+            <div class="card tarjet text-white my-3 " [ngClass]="{ 'bg-danger': item.id===1 , 'bg-warning': item.id===2 , 'bg-default': item.id===3 , 'bg-success': item.id===4 , 'bg-cancel': item.id===5 } ">
+                <div class="card-body ">
+                    <div class="row ">
+                        <div class="col-sm-12 col-md-7 text-center ">
+                            <span class="h5 ">{{item.name}}</span>
+                            <div class="text-white-75 h4 ">{{item.counter}}</div>
+                        </div>
+                        <div class="col-sm-12 col-md-5 text-center ">
+                            <i class="fas fa-cogs fa-3x "></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </slide>
+    </carousel> -->
+</ng-container>
+
+<!-- //iconos -->
+
+<!-- pendientes -->
+<!-- <i class="fas fa-clipboard-list "></i> -->
+
+<!-- activos -->
+<!-- <i class="fas fa-fire "></i> -->
+
+<!-- en curso -->
+<!-- <i class="far fa-check-circle "></i> -->
+
+<!-- <i class="fas fa-hourglass-start "></i> -->
+<!-- finalizado -->
+
+<!-- cancelado -->
+<!-- <i class="far fa-window-close "></i> -->
+
+<!-- cards fondo blanco -->
+<!-- <div class="container ">
+    <div class="row d-flex justify-content-center ">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 car mb-4 " *ngFor="let item of countServices; ">
+            <div class="info-tarjeta d-flex justify-content-between p-3 ">
+                <div class="carrito ">
+                    <i class="fas fa-cogs "></i>
+                </div>
+                <div class="porcentaje text-white rounded-pill pl-2 pr-2 d-flex justify-content-center align-item-center " [ngClass]="{ 'bg-danger': item.id===1 , 'bg-success': item.id===2 , 'bg-default': item.id===3 , 'bg-dark': item.id===4 ,
+                'bg-cancel': item.id===5 } ">
+                    <p class="mr-2 text-white ">{{item.counter}}</p><i class="mt-1 fas fa-angle-up "></i></div>
+            </div>
+            <div class="p-3 ">
+                <h3>{{item.name}}</h3>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div> -->
+
+<!-- tabla de estadisticas de servicios -->
+<div class="mt-4 mb-5 container " *ngIf="dataServices ">
+    <div class="card-header py-1 ">
+        <div class="row ">
+            <div class="col-sm-12 col-md-6 mt-0 mt-md-3 ">
+                <h4 class="text-muted d-none d-sm-none d-md-block ">Lista de servicios</h4>
+                <h5 class="text-muted d-block d-sm-block d-md-none ">Lista de servicios</h5>
+            </div>
+            <div class="col-sm-12 col-md-6 mt-0">
+                <!-- <mat-form-field class="w-100" fxFlex="100">
+                    <mat-label>Buscar <i class="fas fa-search"></i> </mat-label>
+                    <input matInput type="text" [(ngModel)]="fieldSearch">
+                    <button mat-button *ngIf="fieldSearch" matSuffix mat-icon-button (click)="fieldSearch=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field> -->
+            </div>
+        </div>
+    </div>
+    <div class="datatable mt-3 ">
+        <div class="row " *ngIf="dataServices.length===0 ">
+            <div class="col-sm-12 ">
+                <div class="alert alert-danger " role="alert ">
+                    No se encontraron servicios disponibles
+                </div>
+            </div>
+        </div>
+
+        <div class="row " *ngIf="dataServices.length> 0">
+            <div class="col-sm-12">
+                <table class="table table-bordered table-hover d-sm-block d-md-table table-responsive w-100 border-0" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" *ngFor="let list of jsontitles" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Servicio: activate to sort column descending">
+                                {{list.name}}
+                            </th>
+                            <th class="sorting text-center" aria-controls="dataTable" rowspan="1" colspan="2" aria-sort="ascending" aria-label="Servicio: activate to sort column descending">
+                                Acción
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr role="row" class="odd" *ngFor="let list of dataServices">
+                            <td class="sorting_1">SP-{{list.id_srv}}</td>
+                            <td>{{list.categoria}}</td>
+                            <td>{{list.subCategoria}}</td>
+                            <td>{{list.fecha}}</td>
+                            <td>
+                                <div class="badge bg-success text-white badge-pill" [ngClass]="{'bg-danger': list.idEstado === 1, 'bg-warning': list.idEstado === 2,
+                                    'bg-default': list.idEstado === 3, 'bg-success': list.idEstado === 4,
+                                    'bg-cancel': list.idEstado === 5}">
+                                    {{list.estado}}
+                                </div>
+                            </td>
+                            <td>{{list.direccion}}</td>
+                            <td>{{list.NombreProfesionales}}</td>
+                            <td class="text-center px-3">
+                                <a *ngIf="list.totalCotizaciones>0" role="button" (click)="openCotizations(list)" class="" tooltip="Ver cotizaciones" placement="top">
+                                    <!-- <i class="far fa-window-restore fa-2x"></i> -->
+                                    <span class="material-icons fs-2 text-success">price_change</span>
+                                </a>
+                                <a *ngIf="list.totalFotosCotizaciones>0" role="button" (click)="openImagesService(list)" class="" tooltip="Ver Fotos" placement="top">
+                                    <!-- <i class="far fa-window-restore fa-2x"></i> -->
+                                    <span class="material-icons fs-2 text-primary">photo</span>
+                                </a>
+                            </td>
+                            <td class="text-center px-3">
+                                <a *ngIf="list.idEstado!=5" role="button" class="" (click)="removeCotizations(list)" tooltip="Cancelar ( Al cancelar incurre en los gastos dependiendo el estado del servicio )" placement="top">
+                                    <i class="fas fa-times fa-2x"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- cantidades -->
+            <div class="col-sm-12 col-md-5">
+                <div class="dataTables_info" role="status" aria-live="polite">
+                    {{pagination.meta.to}} de {{pagination.meta.total}} servicios
+                </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col-sm-12 col-md-7" *ngIf="pagination.meta.total > 15">
+                <div class="justify-content-end d-block">
+                    <ul class="pagination justify-content-end">
+                        <li class="disabled px-1">
+                            <a (click)="onClickPagination(pagination.meta.current_page-1)" aria-label="Previous">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </li>
+                        <li class="px-1" *ngFor="let pagina of itemsForPage ;let i = index ">
+                            <a [ngClass]="pagination.meta.current_page === (i+1)? 'active' : ''" (click)="onClickPagination(i+1)">{{i + 1 }}</a>
+                        </li>
+                        <li>
+                            <a (click)="onClickPagination(pagination.meta.last_page)" aria-label="Next">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

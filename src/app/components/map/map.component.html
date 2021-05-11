@@ -1,0 +1,11 @@
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
+    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+        <agm-info-window>
+            <h5>Dirección: {{address}}</h5>
+            <div>Latitud: {{latitude}}</div>
+            <div>Longitud: {{longitude}}</div>
+        </agm-info-window>
+    </agm-marker>
+    <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="1000" [fillColor]="'orange'" [editable]="true">
+    </agm-circle>
+</agm-map>

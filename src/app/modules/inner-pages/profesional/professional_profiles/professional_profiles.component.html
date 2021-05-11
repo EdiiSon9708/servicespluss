@@ -1,0 +1,102 @@
+<div class="blog">
+    <div class="main">
+        <app-breadcrumb [tittle]="tittle" [breadcrumbTittle]="breadcrumbTittle" [breadcrumbTittledetails]="false">
+        </app-breadcrumb>
+        <section id="blog" class="section blog-area ptb_100">
+            <div class="container">
+                <div class="row text-right">
+                    <div class="col-12">
+                        <!-- input seleccionar categoria en tamaño de escritorio -->
+                        <mat-form-field appearance="outline" fxFlex="100"
+                            class="d-none d-sm-none d-lg-inline-block w-25">
+                            <mat-label class="p-2%">Seleccionar categoría</mat-label>
+                            <mat-select (selectionChange)="onClickPerCategory($event)">
+                                <mat-option>Seleccionar categoría</mat-option>
+                                <mat-option *ngFor="let listCategory of categoryProfessional"
+                                    [value]="listCategory.id_catg">
+                                    {{listCategory.nombre_catg}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!-- input seleccionar categoria en tamaño responsive -->
+                        <mat-form-field appearance="outline" fxFlex="100" class="d-block d-sm-block d-lg-none w-100">
+                            <mat-label class="p-2%">Seleccionar categoría</mat-label>
+                            <mat-select>
+                                <mat-option>Seleccionar categoría</mat-option>
+                                <mat-option *ngFor="let listCategory of categoryProfessional"
+                                    [value]="listCategory.id_catg">
+                                    {{listCategory.nombre_catg}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4" *ngFor="let list of listProfessionals.data">
+                        <!-- Single Blog -->
+                        <div class="single-blog res-margin cursor">
+                            <a (click)="onClickDetailProfessional(list.IdProfessional)">
+
+                                <!-- Blog Thumb -->
+                                <div class="reviewer-thumb text-center p-3">
+                                    <img class="avatar-lg mx-auto radius-100" [src]="list.fotoProfesional"
+                                        [alt]="list.IdProfessional">
+                                </div>
+                                <!-- Blog Content -->
+                                <div class="blog-content p-4">
+                                    <!-- Meta Info -->
+                                    <ul class="meta-info d-flex justify-content-between">
+                                        <li>
+                                            <p class="text-muted">{{list.dataCiudad[0].Nombre}},
+                                                {{list.dataCiudad[0].NombreD}}</p>
+                                        </li>
+                                        <li>
+                                            <span *ngFor="let fullStar of list.fullStars"
+                                                class="fas fa-star checked"></span>
+                                            <span *ngFor="let emptyStar of list.emptyStars"
+                                                class="far fa-star emptyStar"></span>
+                                        </li>
+                                    </ul>
+                                    <!-- Blog Title -->
+                                    <h3 class="blog-title my-3 text-muted">{{list.nombre_pfr}}</h3>
+                                    <p class="ellipsis">{{list.descripcion}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12" *ngIf="listProfessionals.data.length === 0">
+                        <div class="alert alert-danger" role="alert">
+                            {{messageNoProfessional}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="listProfessionals.data.length > 9">
+                    <div class="col-12">
+                        <!-- Pagination -->
+                        <ul class="pagination justify-content-center">
+                            <li class="disabled px-1">
+                                <a (click)="onClickFirst(listProfessionals.meta.from)" aria-label="Previous">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </li>
+                            <li class="px-1">
+                                <a href="javascript:;">1</a>
+                            </li>
+                            <li class="active px-1">
+                                <a href="javascript:;">2</a>
+                            </li>
+                            <li class="px-1">
+                                <a href="javascript:;">3</a>
+                            </li>
+                            <li>
+                                <a (click)="onClickLast(listProfessionals.meta.to)" aria-label="Next">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<app-footer-one></app-footer-one>

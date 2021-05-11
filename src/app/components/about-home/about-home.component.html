@@ -1,0 +1,28 @@
+<section id="about-home" class="section service-area overflow-hidden">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 col-lg-6">
+                <!-- Service Text -->
+                <div class="service-text pt-4 pt-lg-0">
+                    <h2 class="promo-text mb-4 text-muted" *ngIf="dataContent">{{dataContent[2].content_pgc}}</h2>
+                    <h2 class="shine-sidenav lines-shimmer-sidenav" *ngIf="!dataContent"></h2>
+                    <!-- Service List -->
+                    <div class="service-text media-body">
+                        <p *ngIf="dataContent">{{dataContent[3].content_pgc}}</p>
+                        <p class="shine-sidenav lines-shimmer-sidenav" *ngIf="!dataContent"></p>
+                    </div>
+                    <a routerLink="/about" routerLinkActive="router-link-active" class="btn prolend-btn mt-4">Ver más
+                        <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Service Thumb -->
+                <div class="service-thumb mx-auto text-center pt-4 pt-lg-0">
+                    <img src="https://via.placeholder.com/400x578?text=Servicepluss" alt="imagen_sin_datos"
+                        *ngIf="!dataContent">
+                    <img *ngIf="dataContent" [src]="dataContent[4].content_pgc" [alt]="dataContent[7].desc_pgc">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

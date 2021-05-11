@@ -1,0 +1,12 @@
+<section id="features" class="section product-features-area overflow-hidden pt-4 d-block d-sm-block d-md-none">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-12 text-center">
+                <h1 class="ptb_101 text-capitalize text-logo text-muted" *ngIf="dataContent">
+                    {{dataContent[0].content_pgc}}</h1>
+                <p class="text-logo text-muted" *ngIf="dataContent">{{dataContent[1].content_pgc}}</p>
+                <p class="text-logo text-muted shine-sidenav lines-shimmer-sidenav" *ngIf="!dataContent"></p>
+            </div>
+        </div>
+    </div>
+</section>

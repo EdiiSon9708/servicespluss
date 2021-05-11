@@ -1,0 +1,66 @@
+<section class="section breadcrumb-area bg-overlay d-flex align-items-center">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Breamcrumb titulo escritorio -->
+                <div class="text-center d-none d-sm-none d-md-block">
+                    <h2 class="text-white text-uppercase">{{tittle}}</h2>
+                </div>
+                <div class="breadcrumb-content d-flex flex-column align-items-center text-center d-block d-sm-block d-md-none">
+                    <h2 class="text-white text-uppercase">{{tittle}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-none d-sm-none d-md-block">
+                <div>
+                    <ol class="breadcrumb ol">
+                        <div class="d-flex">
+                            <div class="edit-image">
+                                <img *ngIf="userDatas.foto !== null;else imagen" [src]="userDatas?.foto" class="thumbnail-perfil  rounded-circle" [alt]="userDatas?.name">
+                                <div class="editar-photo" (click)="chageImage()">
+                                    <a><i class="fas fa-camera"></i></a>
+                                </div>
+                            </div>
+                            <span class="h2 ml-3 text-white" *ngIf="dataUser.name !== null;else email">{{dataUser?.name}}</span>
+
+                            <ng-template #email>
+                                <span class="h2 ml-3 text-white">{{dataUser?.email}}</span>
+                            </ng-template>
+                        </div>
+
+                        <ng-template #imagen>
+                            <img src="https://ui-avatars.com/api/?size=90&name={{dataUser.name}}" class="rounded-circle" [alt]="dataUser.name">
+                            <!-- <i class="d-none d-sm-none d-md-block camera fas fa-camera fa-2x"></i> -->
+                            <input class="d-none d-sm-none d-md-block edit-photo" type="file">
+                            <!-- <i class="d-block d-sm-block d-md-none camera-responsive fas fa-camera fa-2x"></i> -->
+                            <input class="d-block d-sm-block d-md-none edit-photo-responsive" type="file">
+                        </ng-template>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- Bredcrumb en responsive -->
+        <div class="row">
+            <div class="col-12 text-center d-block d-sm-block d-md-none mt-5">
+                <div class="d-flex">
+                    <div class="edit-image">
+                        <img *ngIf="dataUser.foto !== null;else imagen" [src]="dataUser?.foto" [alt]="dataUser?.name" class="rounded-circle mb-3"><br>
+
+                        <div class="editar-photo">
+                            <a href=""><i class="fas fa-camera"></i></a>
+                        </div>
+                    </div>
+                    <span class="h5 text-white" *ngIf="dataUser.name !== null;else email">{{dataUser?.name}}</span>
+                    <ng-template #email>
+                        <span class="h5 text-white">{{dataUser?.email}}</span>
+                    </ng-template>
+                </div>
+
+                <ng-template #imagen>
+                    <img src="https://ui-avatars.com/api/?size=90&name={{dataUser.name}}" class="rounded-circle mb-3" [alt]="dataUser.foto">
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</section>
