@@ -48,6 +48,7 @@ export class ContactOneComponent implements OnInit {
       this.formQuestion.email = this.contactForm.value.email;
       this.formQuestion.subject = this.contactForm.value.subject;
       this.formQuestion.message = this.contactForm.value.message;
+      this.spinner.hide();
       try {
         await this.formsPageService.createQuestion(this.formQuestion).subscribe(resp => {
           if (resp.status === 1) {
@@ -65,6 +66,7 @@ export class ContactOneComponent implements OnInit {
         this.formsPageService.handlerError(error);
         console.error('Error onsubmitContact en componente contact', error);
       }
+
     }
   }
 

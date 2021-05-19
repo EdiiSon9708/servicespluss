@@ -10,10 +10,12 @@
                     <!-- Store Buttons -->
                     <div class="button-group store-buttons d-flex">
                         <a href="#">
-                            <img src="https://servicespluss.com/assets/img/google_play.png" alt="">
+                            <img src="https://servicespluss.com/assets/img/google_play.png" alt="imagen_sin_datos" *ngIf="!dataContent">
+                            <img *ngIf="dataContent" [src]="dataContent[12].content_pgc" [alt]="dataContent[12].desc_pgc">
                         </a>
                         <a href="#">
-                            <img src="https://servicespluss.com/assets/img/app_store.png" alt="">
+                            <img src="https://servicespluss.com/assets/img/app_store.png" alt="imagen_sin_datos" *ngIf="!dataContent">
+                            <img *ngIf="dataContent" [src]="dataContent[13].content_pgc" [alt]="dataContent[13].desc_pgc">
                         </a>
                     </div>
                     <span class="d-inline-block text-white fw-3 font-italic mt-3">* Disponible para iPhone, iPad y todos los dispositivos Android</span>
@@ -22,13 +24,15 @@
             <div class="col-12 col-md-5">
                 <!-- Download Thumb -->
                 <div class="download-thumb pl-4 d-block d-lg-none">
-                    <img src="https://via.placeholder.com/450X600?text=450x600" alt="">
+                    <img src="https://via.placeholder.com/457X550?text=450x600" alt="imagen_sin_datos" *ngIf="!dataContent">
+                    <img *ngIf="dataContent" [src]="dataContent[11].content_pgc" [alt]="dataContent[11].desc_pgc">
                 </div>
             </div>
         </div>
         <!-- Download Thumb LG -->
         <div class="download-thumb-lg pl-4 d-none d-lg-block">
-            <img src="https://via.placeholder.com/457X550?text=450x600" alt="">
+            <img src="https://via.placeholder.com/457X550?text=450x600" alt="imagen_sin_datos" *ngIf="!dataContent">
+            <img *ngIf="dataContent" [src]="dataContent[11].content_pgc" [alt]="dataContent[11].desc_pgc">
         </div>
     </div>
 </section>

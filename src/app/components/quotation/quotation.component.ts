@@ -166,13 +166,12 @@ export class QuotationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    if (!this.dataUser) {
-        const msn = 'Clic en continuar, y regístrate';
-        this.localService.setJsonValue('crear_servicio',1);
-        this.messageService.alertCotizaciónSesion(msn);
-    }
-
+ 
+    // if (!this.dataUser) {
+    //     const msn = 'Clic en continuar, y regístrate';
+    //     this.localService.setJsonValue('crear_servicio',1);
+    //     this.messageService.alertCotizaciónSesion(msn);
+    // }
 
     this.wowService.init();
     this.InitHorizontalStepperStep1();
@@ -425,13 +424,12 @@ export class QuotationComponent implements OnInit {
   async sendQuotation() {
     if (this.formDireccion.invalid) {
       
-      
-      
-      
       return this.messageService.toastError(this.message);
+      
     } else {
       if (this.dataUser) {
-        
+
+
         
         this.spinner.show();
         this.formCotization.infoUbicationAndQuotations = this.dataUbication;

@@ -27,10 +27,12 @@
 
                     <div class="button-group store-buttons">
                         <a href="#">
-                            <img src="https://servicespluss.com/assets/img/google_play.png" alt="">
+                            <img src="https://servicespluss.com/assets/img/google_play.png" alt="imagen_sin_datos" *ngIf="!dataContent">
+                            <img *ngIf="dataContent" [src]="dataContent[12].content_pgc" [alt]="dataContent[12].desc_pgc">
                         </a>
                         <a href="#">
-                            <img src="https://servicespluss.com/assets/img/app_store.png" alt="">
+                            <img src="https://servicespluss.com/assets/img/app_store.png" alt="imagen_sin_datos" *ngIf="!dataContent">
+                            <img *ngIf="dataContent" [src]="dataContent[13].content_pgc" [alt]="dataContent[13].desc_pgc">
                         </a>
                     </div>
                 </div>

@@ -17,7 +17,10 @@
                                         <mat-error>Campo obligatorio!</mat-error>
                                         <mat-select formControlName="categories">
                                             <mat-option>Selecionar categoría</mat-option>
-                                            <mat-option *ngFor="let category of categoriesQuotation" [value]="category.id_catg" (click)="onClickSubcategory(category.id_catg)">{{category.nombre_catg}}</mat-option>
+                                            <mat-option *ngFor="let category of categoriesQuotation"
+                                                [value]="category.id_catg"
+                                                (click)="onClickSubcategory(category.id_catg)">{{category.nombre_catg}}
+                                            </mat-option>
                                         </mat-select>
                                         <mat-hint align="end">Se requiere una categoría*</mat-hint>
                                     </mat-form-field>
@@ -30,7 +33,8 @@
                                         <mat-error>Campo obligatorio!</mat-error>
                                         <mat-select formControlName="subcategories">
                                             <mat-option>Selecionar Subcategoría</mat-option>
-                                            <mat-option *ngFor="let category of subCategories" [value]="category.id_scatg">
+                                            <mat-option *ngFor="let category of subCategories"
+                                                [value]="category.id_scatg">
                                                 {{category.nombre_scatg}}</mat-option>
                                         </mat-select>
                                         <mat-hint align="end">Se requiere una subcategoría*</mat-hint>
@@ -39,7 +43,7 @@
 
                                 <div fxLayout="column" fxLayoutAlign="center center">
                                     <button type="submit" matStepperNext class="btn btn-primary btn-block">Siguiente <i
-                      class="fas fa-long-arrow-alt-right"></i></button>
+                                            class="fas fa-long-arrow-alt-right"></i></button>
                                 </div>
                             </form>
                         </mat-step>
@@ -60,22 +64,28 @@
                                     <mat-form-field appearance="outline" fxFlex="100">
                                         <mat-icon matSuffix>create</mat-icon>
                                         <mat-label>Descripción del servicio</mat-label>
-                                        <textarea matInput formControlName="description" placeholder="  Ej: Tengo una fuga de gas y requiero ayuda...  " required> </textarea>
+                                        <textarea matInput formControlName="description"
+                                            placeholder="  Ej: Tengo una fuga de gas y requiero ayuda...  "
+                                            required> </textarea>
                                         <mat-error>Campo obligatorio!</mat-error>
                                         <mat-hint align="end">Se requiere una descripción*</mat-hint>
                                     </mat-form-field>
                                 </div>
 
                                 <!-- añadir foto en tamaño de escritorio -->
-                                <b>Cargar Imagenes</b><br/>
+                                <b>Cargar Imagenes</b><br />
                                 <span>Maximo 5 fotos, Formatos (.jpg,.png)</span>
                                 <div class="upload-box mb-2 d-none d-sm-none d-md-block">
                                     <div class=" mb-2 upload-box-content">
-                                        <div class="drop-container mt-2" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+                                        <div class="drop-container mt-2" ngFileDrop [options]="options"
+                                            (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+                                            [ngClass]="{ 'is-drop-over': dragOver }">
                                             <p> Arrastrar hasta aquí o
                                                 <label class="upload-button">
-                                                <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)"
-                                                [uploadInput]="uploadInput" multiple class="d-none"> <span class="btn btn-primary btn-block">selecciona archivos</span>
+                                                    <input type="file" ngFileSelect [options]="options"
+                                                        (uploadOutput)="onUploadOutput($event)"
+                                                        [uploadInput]="uploadInput" multiple class="d-none"> <span
+                                                        class="btn btn-primary btn-block">selecciona archivos</span>
                                                 </label> para subir.
                                             </p>
                                         </div>
@@ -83,16 +93,19 @@
                                 </div>
                                 <div class="d-flex">
                                     <!-- {{files.length}} -->
-                                    <div *ngFor="let file of files" class="file w-24 h-24 position-relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                        <img class="rounded" alt="Midone Tailwind HTML Admin Template" [src]="file.imagePreview">
-                                        <div class="w-5 h-5 p-1 d-flex bg-danger  align-items-center justify-content-center position-absolute rounded-full  cursor-pointer text-white remove-file " (click)="removeFile(file.id)"><span>x</span></div>
+                                    <div *ngFor="let file of files"
+                                        class="file w-24 h-24 position-relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                        <img class="rounded" alt="Midone Tailwind HTML Admin Template"
+                                            [src]="file.imagePreview">
+                                        <div class="w-5 h-5 p-1 d-flex bg-danger  align-items-center justify-content-center position-absolute rounded-full  cursor-pointer text-white remove-file "
+                                            (click)="removeFile(file.id)"><span>x</span></div>
                                     </div>
                                 </div>
                                 <!-- <pre>{{files | json}}</pre> -->
 
                                 <div class="mt-3" fxLayout="column" fxLayoutAlign="center center">
                                     <button type="submit" matStepperNext class="btn btn-primary btn-block">Siguiente <i
-                      class="fas fa-long-arrow-alt-right"></i></button>
+                                            class="fas fa-long-arrow-alt-right"></i></button>
                                 </div>
                             </form>
                         </mat-step>
@@ -165,15 +178,20 @@
                                                                 <mat-error>Departamento Obligatorio!</mat-error>
                                                             </mat-form-field> -->
                                                     <mat-form-field class="example-full-width">
-                                                        <input type="text" placeholder="Digite Departamento" aria-label="Number" [formControl]="myControl" matInput [matAutocomplete]="auto">
+                                                        <input type="text" placeholder="Digite Departamento"
+                                                            aria-label="Number" [formControl]="myControl" matInput
+                                                            [matAutocomplete]="auto">
                                                         <mat-icon matSuffix>location_city</mat-icon>
                                                         <mat-autocomplete #auto="matAutocomplete">
-                                                            <mat-option *ngFor="let depto of filteredDeptos | async" [value]="depto.Nombre" (click)="getCity(depto.IdDepartamento)">
+                                                            <mat-option *ngFor="let depto of filteredDeptos | async"
+                                                                [value]="depto.Nombre"
+                                                                (click)="getCity(depto.IdDepartamento)">
                                                                 {{ depto.Nombre }}
                                                             </mat-option>
                                                         </mat-autocomplete>
                                                         <mat-error *ngFor="let validation of validation_msgs.myControl">
-                                                            <div *ngIf="myControl.hasError(validation.type) && myControl.touched">
+                                                            <div
+                                                                *ngIf="myControl.hasError(validation.type) && myControl.touched">
                                                                 {{validation.message}}
                                                             </div>
                                                         </mat-error>
@@ -181,15 +199,20 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <mat-form-field class="example-full-width w-100">
-                                                        <input type="text" placeholder="{{placeCity}}" aria-label="Number" [formControl]="myControl2" matInput [matAutocomplete]="auto2">
+                                                        <input type="text" placeholder="{{placeCity}}"
+                                                            aria-label="Number" [formControl]="myControl2" matInput
+                                                            [matAutocomplete]="auto2">
                                                         <mat-icon matSuffix>location_city</mat-icon>
                                                         <mat-autocomplete #auto2="matAutocomplete">
-                                                            <mat-option *ngFor="let city of filteredCitys | async" [value]="city.Nombre">
+                                                            <mat-option *ngFor="let city of filteredCitys | async"
+                                                                [value]="city.Nombre">
                                                                 {{ city.Nombre }}
                                                             </mat-option>
                                                         </mat-autocomplete>
-                                                        <mat-error *ngFor="let validation of validation_msgs.myControl2">
-                                                            <div *ngIf="myControl2.hasError(validation.type) && myControl2.touched">
+                                                        <mat-error
+                                                            *ngFor="let validation of validation_msgs.myControl2">
+                                                            <div
+                                                                *ngIf="myControl2.hasError(validation.type) && myControl2.touched">
                                                                 {{validation.message}}
                                                             </div>
                                                         </mat-error>
@@ -204,7 +227,8 @@
                                                 <div class="col-12">
                                                     <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                                         <mat-icon matSuffix> person_pin_circle</mat-icon>
-                                                        <mat-label>Barrio <small class="text-muted ">(opcional)</small> </mat-label>
+                                                        <mat-label>Barrio <small class="text-muted ">(opcional)</small>
+                                                        </mat-label>
                                                         <input type="text" matInput formControlName="neighborhood">
                                                     </mat-form-field>
                                                 </div>
@@ -212,9 +236,10 @@
                                                 <div class="col-12 d-flex pl-0 pr-0">
                                                     <div class="col-6">
                                                         <mat-form-field appearance="outline" fxFlex="100" class="w-100">
-                                                            <mat-label>Via</mat-label>
+                                                            <mat-label>Dirección</mat-label>
                                                             <mat-icon matSuffix> swap_calls</mat-icon>
-                                                            <input type="text" matInput formControlName="via" placeholder="calle/carrera/tranversal">
+                                                            <input type="text" matInput formControlName="via"
+                                                                placeholder="calle/carrera/tranversal">
                                                             <mat-error> Via Obligatorio!</mat-error>
                                                         </mat-form-field>
                                                     </div>
@@ -222,7 +247,8 @@
                                                         <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                                             <mat-icon matSuffix>swap_horizontal_circle</mat-icon>
                                                             <mat-label> Complemento</mat-label>
-                                                            <input type="text" matInput formControlName="complemento" placeholder="Ej: Apartamento 103 Torre 1 ">
+                                                            <input type="text" matInput formControlName="complemento"
+                                                                placeholder="Ej: Apartamento 103 Torre 1 ">
                                                             <mat-error> Numero Obligatorio!</mat-error>
                                                         </mat-form-field>
                                                     </div>
@@ -269,44 +295,54 @@
                                                                 <input type="text" matInput formControlName="telephone">
                                                             </mat-form-field>
                                                         </div> -->
-                                                <button id="elId" (click)="scrollToId('elId')" type="submit" class=" ScrollUp btn btn-primary mt-1 mb-4">Ubicar en el mapa</button>
+                                                <button id="elId" (click)="scrollToId('elId')" type="submit"
+                                                    class=" ScrollUp btn btn-primary mt-1 mb-4">Ubicar en el
+                                                    mapa</button>
                                             </div>
                                             <div class="warning text-center mb-2 align-content-center">
                                                 <div>
                                                     <mat-icon>warning </mat-icon>
                                                 </div>
                                                 <p class="text-muted">¿no aparaece tu dirección?</p>
-                                                <p class="text-muted ">Puedes arrastrar el icono y ubicarlo en la direccion exacta</p>
+                                                <p class="text-muted ">Puedes arrastrar el icono y ubicarlo en la
+                                                    direccion exacta</p>
 
                                             </div>
                                         </form>
 
                                         <!-- mapa en tamaño de escritorio-->
-                                        <section class="mb-2 pl-0 pb-3 pr-0 d-none d-sm-none d-lg-block col-12 section map-area mb-2">
-                                            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
-                                                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                                        <section
+                                            class="mb-2 pl-0 pb-3 pr-0 d-none d-sm-none d-lg-block col-12 section map-area mb-2">
+                                            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+                                                [scrollwheel]="false">
+                                                <agm-marker [latitude]="latitude" [longitude]="longitude"
+                                                    [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
                                                     <agm-info-window>
                                                         <h5>Dirección: {{address}}</h5>
                                                         <div>Latitud: {{latitude}}</div>
                                                         <div>Longitud: {{longitude}}</div>
                                                     </agm-info-window>
                                                 </agm-marker>
-                                                <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="1000" [fillColor]="'orange'" [editable]="true">
+                                                <agm-circle [latitude]="latitude" [longitude]="longitude"
+                                                    [radius]="1000" [fillColor]="'orange'" [editable]="true">
                                                 </agm-circle>
                                             </agm-map>
                                         </section>
 
                                         <!-- Mapa en tamaño responsive -->
                                         <section class="d-block d-sm-block d-lg-none col-12 section map-area mt-3">
-                                            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
-                                                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                                            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+                                                [scrollwheel]="false">
+                                                <agm-marker [latitude]="latitude" [longitude]="longitude"
+                                                    [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
                                                     <agm-info-window>
                                                         <h5>Dirección: {{address}}</h5>
                                                         <div>Latitud: {{latitude}}</div>
                                                         <div>Longitud: {{longitude}}</div>
                                                     </agm-info-window>
                                                 </agm-marker>
-                                                <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="1000" [fillColor]="'orange'" [editable]="true">
+                                                <agm-circle [latitude]="latitude" [longitude]="longitude"
+                                                    [radius]="1000" [fillColor]="'orange'" [editable]="true">
                                                 </agm-circle>
                                             </agm-map>
                                         </section>
@@ -335,7 +371,7 @@
 
                                 <div fxLayout="column" fxLayoutAlign="center center">
                                     <button type="button" class="btn btn-success1 btn-block" (click)="sendQuotation()">
-                    Solicitar cotización <i class="fas fa-long-arrow-alt-right"></i></button>
+                                        Solicitar cotización <i class="fas fa-long-arrow-alt-right"></i></button>
                                 </div>
                             </form>
                         </mat-step>

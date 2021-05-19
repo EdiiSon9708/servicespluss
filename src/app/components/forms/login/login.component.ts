@@ -23,6 +23,10 @@ import { ModalLoginComponent } from '../../modals/modal-login/modal-login.compon
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  horizontalStepperStep1: FormGroup;
+  horizontalStepperStep2: FormGroup;
+
   message = 'Campos obligatorios por confirmar';
   userLoginFormGroup: FormGroup;
   userRegisterFormGroup: FormGroup;
@@ -63,7 +67,6 @@ export class LoginComponent implements OnInit {
     this.initFormTerminos();
     this.initFormRestorePassword();
     this.formRestorePassword();
-    console.log("ngonini",this.selectedFormAuthentic)
   }
 
   /** Inicializa el el formulario de registro de usuarios */
@@ -83,8 +86,9 @@ export class LoginComponent implements OnInit {
       termsAndCondit: ['', Validators.required],
       termsAndCondit1: ['', Validators.required],
       termsAndCondit2: ['', Validators.required],
+      // termsAndCondit3: ['', Validators.required],
       idPerfil:[1]
-    // termsAndCondit3: ['', Validators.required],   
+     
     }
     
     );
@@ -171,21 +175,18 @@ export class LoginComponent implements OnInit {
       this.formRegister.idPerfil=1;
       try {
         await this.authService.register(this.formRegister).subscribe((resp: ResponseApi) => {
-          if (resp.status === 1) {
+          if (resp.statusWeb === 1) {
             this.spinner.hide();
-            // this.authService.saveToken(resp.data.access_token);
-            // this.authService.saveUser(resp.data.user);
-            // this.authService.loggedIn.next(true);
-            // this.authService.currentUserSubject.next(resp.data.user);
+            this.authService.saveToken(resp.data.access_token);
+            this.authService.saveUser(resp.data.user);
+            this.authService.loggedIn.next(true);
+            this.authService.currentUserSubject.next(resp.data.user);
             this.messageService.alertSuccess(resp.msn);
-            // this.router.navigate(['/admin']);
-
+            this.router.navigate(['/login']);
           } else {
             this.spinner.hide();
             this.respError = resp.data;
             this.authService.handlerError(this.respError);
-            // const dialogRef = this.dialog.open(ModalLoginComponent, { width: '500px', data: { data: this.respError } });
-            // dialogRef.afterClosed().subscribe(result => result);
           }
           this.selectedFormAuthentic=0;
         });
@@ -198,6 +199,7 @@ export class LoginComponent implements OnInit {
       this.spinner.hide();
       this.messageService.toastError(this.message);
     }
+    this.spinner.hide();
   }
   /** Metodo para loguear un usuario con laravel */
   async onLoginUser() {

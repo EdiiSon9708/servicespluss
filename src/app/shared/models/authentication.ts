@@ -4,6 +4,7 @@ export interface ResponseApi {
     msn: string;
     status: number;
     data?: DataAccessUser;
+    statusWeb: number;
 }
 
 export interface DataAccessUser {

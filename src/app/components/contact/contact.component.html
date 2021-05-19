@@ -21,7 +21,7 @@
                                 <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                     <mat-icon matSuffix>person</mat-icon>
                                     <mat-label>Nombre completo</mat-label>
-                                    <input type="text" matInput formControlName="fullName">
+                                    <input type="text" matInput placeholder="Introduzca su nombre aquí" formControlName="fullName">
                                     <mat-error *ngIf="formContact.fullName.invalid">
                                         Campo nombre es obligatorio!
                                     </mat-error>
@@ -30,11 +30,11 @@
                                 <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                     <mat-icon matSuffix>local_post_office</mat-icon>
                                     <mat-label>Correo electrónico</mat-label>
-                                    <input type="email" matInput formControlName="email">
-                                    <mat-error *ngIf="formContact.email.errors.required">
+                                    <input type="email" matInput placeholder="Ej. email@address.com" formControlName="email">
+                                    <mat-error *ngIf="formContact.email.errors && formContact.email.errors.required">
                                         Campo email es obligatorio!
                                     </mat-error>
-                                    <mat-error *ngIf="formContact.email.errors.email">
+                                    <mat-error *ngIf="formContact.email.errors && formContact.email.errors.email">
                                         Por favor, introduce una dirección de correo electrónico válida
                                     </mat-error>
                                 </mat-form-field>
@@ -42,7 +42,7 @@
                                 <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                     <mat-icon matSuffix>note_add</mat-icon>
                                     <mat-label>Tema sobre el que nos quieres preguntar</mat-label>
-                                    <input type="text" matInput formControlName="subject">
+                                    <input type="text" matInput placeholder="Ej. Reparación de tubería baño" formControlName="subject">
                                     <mat-error *ngIf="formContact.subject.invalid">
                                         Campo título es obligatorio!
                                     </mat-error>
@@ -52,7 +52,7 @@
                                 <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                     <mat-icon matSuffix>create</mat-icon>
                                     <mat-label>Danos más detalles acerca de tu pregunta</mat-label>
-                                    <textarea matInput formControlName="message" rows="11"></textarea>
+                                    <textarea type="text" matInput placeholder="Ej. Necesito reparar la tubería completa del baño por fuga sanitaria" formControlName="message" rows="11"></textarea>
                                     <mat-error *ngIf="formContact.message.invalid">
                                         Campo descripción es obligatorio!
                                     </mat-error>

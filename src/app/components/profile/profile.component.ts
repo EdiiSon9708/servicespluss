@@ -177,27 +177,26 @@ export class ProfileComponent implements OnInit {
     this.InitForm();
     this.UpdateInfoUser();
     this.getParameters(1);
-    this.getParametersGender(3);
-    
+    this.getParametersGender(3);   
   }
 
   InitForm() {
     this.profileUser = this.formBuilder.group({
-      nombres1:     ['Andres',  Validators.required],
-      nombre2:      ['Pablo',  Validators.required],
-      apellido1:    ['Jimenez',  Validators.required],
-      apellido2:    ['Hernandez',  Validators.required],
+      nombres1:     ['',  Validators.required],
+      nombre2:      ['',  Validators.required],
+      apellido1:    ['',  Validators.required],
+      apellido2:    ['',  Validators.required],
       IdTipoDocumento:[1,  Validators.required],
-      documento:    ['10245698',  Validators.required],
+      documento:    ['',  Validators.required],
       genero:       ['',  Validators.required],
-      address:      ['carrera 25',  Validators.required],
+      address:      ['',  Validators.required],
       nDepto:       [null,  Validators.required],
       nciudad:      [null,  Validators.required],
-      f_nacimiento: [new Date("2011-01-01"),  Validators.required],      
-      telefono:     ['7896523',  Validators.required],
-      telefono2:    ['7896521'],
-      Celular:      ['3132143569'],
-      email:        ['geranjian@gmail.com',  Validators.required],
+      f_nacimiento: [new Date(""),  Validators.required],      
+      telefono:     ['',  Validators.required],
+      telefono2:    [''],
+      Celular:      [''],
+      email:        ['',  Validators.required],
     });
   }
 

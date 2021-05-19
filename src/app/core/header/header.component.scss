@@ -4,10 +4,26 @@
 
 li {
     a.router-link-active {
-        color: #3b74a5!important;
-        font-size: 1.05em;
-        font-weight: bold;
+        border-radius: 30px;
+        background: #035aa6;
+        color: #fff !important;
+        visibility: visible;
+        animation-duration: 2s;
+        animation-delay: 300ms;
+        animation-iteration-count: infinite;
+        animation-name: pulse;
+        font-size: auto;
     }
+}
+
+li {
+    a.router-link-active2 {
+        color: #035aa6 !important;
+    }
+}
+
+.header1 {
+    width: auto;
 }
 
 //Sombra redondeada en item del menu
@@ -19,9 +35,7 @@ li {
 //         border-radius: 40px 40px 40px 40px;
 //     }
 // }
-.header1 {
-    width: auto;
-}
+
 
 .iconic {
     font-size: 25px;
@@ -63,3 +77,39 @@ li {
 .dropdown-item {
     text-transform: capitalize!important;
 }
+
+.solicitar {
+    width: 178px ;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.solicitar2 {
+    cursor: pointer;
+}
+
+.serviamigo {
+    width: 160px ;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.icono:focus {
+    color: #035aa6!important;
+}
+
+
+// ::ng-deep .nav-link:focus {
+//     border-radius: 30px;
+//     background: #035aa6;
+//     color: #fff;
+//     visibility: visible;
+//     animation-duration: 2s;
+//     animation-delay: 300ms;
+//     animation-iteration-count: infinite;
+//     animation-name: pulse;
+// }
+

@@ -1,54 +1,81 @@
 <header class="navbar navbar-sticky navbar-expand-md navbar-dark">
     <div class="container-fluid position-relative header1">
-        <a class="navbar-brand" routerLink="/" routerLinkActive="router-link-active" [className]="viewMenu? 'active':''">
-            <img class="navbar-brand-regular w-40" src="https://servicespluss.com/assets/img/brand.png" alt="brand-logo" alt="brand-logo">
-            <img class="navbar-brand-sticky w-40" src="https://servicespluss.com/assets/img/brand.png" alt="brand-logo" alt="sticky brand-logo">
+        <a class="navbar-brand" routerLink="/" routerLinkActive="router-link-active"
+            [className]="viewMenu? 'active':''">
+            <img class="navbar-brand-regular w-40" src="https://servicespluss.com/assets/img/brand.png" alt="brand-logo"
+                alt="brand-logo">
+            <img class="navbar-brand-sticky w-40" src="https://servicespluss.com/assets/img/brand.png" alt="brand-logo"
+                alt="sticky brand-logo">
         </a>
-        <button class="navbar-toggler d-block d-sm-block d-lg-none" type="button" data-target=".navbar-collapse" data-toggle="navbarToggler" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-block d-sm-block d-lg-none" type="button" data-target=".navbar-collapse"
+            data-toggle="navbarToggler" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="navbar-inner" *ngIf="viewMenu">
-            <button class="navbar-toggler d-lg-none" type="button" data-target=".navbar-collapse" data-toggle="navbarToggler" aria-label="Toggle navigation">
+            <button class="navbar-toggler d-lg-none" type="button" data-target=".navbar-collapse"
+                data-toggle="navbarToggler" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <nav>
-                <ul class="navbar-nav mr-5" id="navbar-nav" *ngIf="user$ | async as user; else login">
+                <ul class="navbar-nav mr-5 ml-3" id="navbar-nav" *ngIf="user$ | async as user; else login">
                     <li class="nav-item dropdown">
 
 
-                        <a routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" data-toggle="navbarToggler" routerLink="/home"><span class="text-truncate">Inicio</span>
-                            
+                        <a routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}"
+                            class="nav-link" data-toggle="navbarToggler" routerLink="/home"><span class="">Inicio</span>
+
                         </a>
                     </li>
 
                     <!-- solicitar cotizacion en tamaño de escritorio -->
-                    <li class="nav-item dropdown" data-toggle="navbarToggler" data-target=".navbar-collapse">
-                        <a class="nav-link scroll" routerLink="/quotation" routerLinkActive="router-link-active"><span
-                                class="text-truncate">Solicitar cotización</span></a>
+                    <li class="nav-item dropdown d-none d-sm-none d-md-block" data-toggle="navbarToggler"
+                        data-target="navbar-collapse">
+                        <a class="nav-link scroll solicitar" routerLink="/quotation"
+                            routerLinkActive="router-link-active"><span class="">Solicitar cotización</span></a>
                     </li>
 
-                    <li class="nav-item" data-target=".navbar-collapse" data-toggle="navbarToggler">
-                        <a routerLinkActive="router-link-active" class="nav-link scroll" routerLink="/professional_profile"><span class="text-truncate">Perfil
+                    <!-- solicitar cotizacion en tamaño de responsive -->
+                    <li class="nav-item dropdown d-block d-sm-block d-md-none" data-toggle="navbarToggler"
+                        data-target="navbar-collapse">
+                        <a class="nav-link scroll" routerLink="/quotation" routerLinkActive="router-link-active"><span
+                                class="">Solicitar cotización</span></a>
+                    </li>
+
+                    <!-- Serviamigo en tamaño responsive -->
+                    <li class="nav-item d-block d-sm-block d-md-none" data-target=".navbar-collapse"
+                        data-toggle="navbarToggler">
+                        <a routerLinkActive="router-link-active" class="nav-link scroll"
+                            routerLink="/professional_profile"><span class="">Perfil
+                                serviamigo</span></a>
+                    </li>
+
+                    <!-- Serviamigo en tamaño escritorio -->
+                    <li class="nav-item d-none d-sm-none d-md-block" data-target=".navbar-collapse"
+                        data-toggle="navbarToggler">
+                        <a routerLinkActive="router-link-active" class="nav-link scroll serviamigo"
+                            routerLink="/professional_profile"><span class="">Perfil
                                 serviamigo</span></a>
                     </li>
                     <!-- Frecuentes -->
                     <li class="dropdown" data-toggle="collapse">
-                        <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
-                                class="text-truncate">Faqs</span>
+                        <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="">Faqs</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" routerLink="/faq" routerLinkActive="router-link-active"><span
-                                        class="text-truncate">Pregúntas frecuentes</span></a>
+                                <a class="dropdown-item" routerLink="/faq" routerLinkActive="router-link-active2"><span
+                                        class="">Pregúntas frecuentes</span></a>
                             </li>
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" routerLink="/reviews" routerLinkActive="router-link-active"><span
+                                <a class="dropdown-item" routerLink="/reviews"
+                                    routerLinkActive="router-link-active2"><span
                                         class="text-truncate">Testimonios</span></a>
                             </li>
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" routerLink="/about" routerLinkActive="router-link-active"><span
-                                        class="text-truncate">Acerca de nosotros</span></a>
+                                <a class="dropdown-item" routerLink="/about"
+                                    routerLinkActive="router-link-active2"><span class="text-truncate">Acerca de
+                                        nosotros</span></a>
                             </li>
                         </ul>
                     </li>
@@ -58,31 +85,40 @@
                                 class="text-truncate">Contacto</span></a>
                     </li>
                     <!-- Nombre de usuario -->
-                    <li class="d-none d-sm-none d-md-block" data-toggle="navbarToggler" data-target=".navbar-collapse" *ngIf="user">
-                        <a class="nav-link scroll nav-item" *ngIf="user.name !== null;else email" routerLink="/admin" routerLinkActive="router-link-active"><span class="text-truncate">{{user.name}}</span></a>
+                    <li class="d-none d-sm-none d-md-block" data-toggle="navbarToggler" data-target=".navbar-collapse"
+                        *ngIf="user">
+                        <a class="nav-link scroll nav-item" *ngIf="user.name !== null;else email"
+                            routerLink="/admin"><span class="text-truncate">{{user.name}}</span></a>
                         <ng-template #email>
-                            <a class="nav-link scroll nav-item" routerLink="/admin" routerLinkActive="router-link-active"><span
+                            <a class="nav-link scroll nav-item" routerLink="/admin"
+                                routerLinkActive="router-link-active"><span
                                     class="text-truncate">{{user.email}}</span></a>
                         </ng-template>
                     </li>
 
                     <!-- nombre usuario con desplegable en responsive -->
-                    <li class="d-block d-sm-block d-md-none" data-toggle="collapse" *ngIf="user">
-                        <a class="nav-link scroll dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="user.name !== null;else email" routerLink="/admin"><span
-                                class="text-truncate">{{user.name}}</span></a>
+                    <li class="d-block d-sm-block d-md-none ml-2" data-toggle="collapse" *ngIf="user">
+                        <a class="nav-link scroll dropdown-toggle" href="javascript:;"
+                            routerLinkActive="router-link-active2" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" *ngIf="user.name !== null;else email"
+                            routerLink="/admin"><span class="text-truncate">{{user.name}}</span></a>
                         <ng-template #email>
-                            <a class="nav-link scroll dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+                            <a class="nav-link scroll dropdown-toggle" href="javascript:;"
+                                routerLinkActive="router-link-active2" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
                                     class="text-truncate">{{user.email}}</span></a>
                         </ng-template>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" routerLink="/admin" routerLinkActive="router-link-active"><span
-                                        class="text-truncate"><i class="fas fa-user iconic pr-2"></i>Mi
+                                <a id="profile" class="dropdown-item" routerLink="/admin"
+                                    routerLinkActive="router-link-active2"><span class="text-truncate"><i
+                                            class="fas fa-user iconic pr-2"></i>Mi
                                         perfil</span></a>
                             </li>
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" href="https://crm.servicespluss.com/login" target="_blank" routerLinkActive="router-link-active"><span
-                                        class="text-truncate"><i class="fas fa-exchange-alt iconic pr-2"></i>Acceso
+                                <a class="dropdown-item" href="https://crm.servicespluss.com/login" target="_blank"
+                                    routerLinkActive="router-link-active"><span class="text-truncate"><i
+                                            class="fas fa-exchange-alt iconic pr-2"></i>Acceso
                                         serviamigo</span></a>
                             </li>
                             <li class="nav-item" data-toggle="navbarToggler">
@@ -94,9 +130,12 @@
 
                     <li class="dropdown" data-toggle="collapse" *ngIf="user">
                         <!-- Foto inicio sesion escritorio -->
-                        <a class="pt-0 text-size nav-link dropdown-toggle justify-content-center d-none d-sm-none d-md-block " href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="pt-0 text-size nav-link dropdown-toggle justify-content-center d-none d-sm-none d-md-block "
+                            href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <span class="text-truncate">
-                                <img *ngIf="user.foto !== null;else imagen" [src]="user.foto" class="rounded-circle thumbnail-perfil" [alt]="user.foto">
+                                <img *ngIf="user.foto !== null;else imagen" [src]="user.foto"
+                                    class="rounded-circle thumbnail-perfil" [alt]="user.foto">
                             </span>
                             <!-- <div class="text-truncate " *ngIf="user.foto !== null ;else imagen">
                                 <div [style.background-image]="'url(user.foto)'">
@@ -105,70 +144,102 @@
                             </div> -->
 
                             <ng-template #imagen>
-                                <span class=" m-1 text-truncate"><img src="https://ui-avatars.com/api/?size=100&name={{user.name}}"
-                                    class="rounded-circle thumbnail-perfil" [alt]="user.foto"></span>
+                                <span class=" m-1 text-truncate"><img
+                                        src="https://ui-avatars.com/api/?size=100&name={{user.name}}"
+                                        class="rounded-circle thumbnail-perfil" [alt]="user.foto"></span>
                             </ng-template>
                         </a>
                         <!-- Menu usuario desplegable  -->
-                        <ul class="dropdown-menu dropdown-menu-profile dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <ul class="dropdown-menu dropdown-menu-profile dropdown-menu-right"
+                            aria-labelledby="navbarDropdownMenuLink">
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" routerLink="/admin" routerLinkActive="router-link-active"><span class="text-truncate"><i
-                                    class="fas fa-user iconic pr-2"></i>Mi perfil</span></a>
+                                <a class="dropdown-item" routerLink="/admin"
+                                    routerLinkActive="router-link-active2"><span class="text-truncate"><i
+                                            class="fas fa-user iconic pr-2"></i>Mi perfil</span></a>
                             </li>
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" href="https://crm.servicespluss.com/login" target="_blank"><span class="text-truncate"><i
-                                    class="fas fa-exchange-alt iconic pr-2"></i>Acceso serviamigo</span></a>
+                                <a class="dropdown-item" href="https://crm.servicespluss.com/login"
+                                    target="_blank"><span class="text-truncate"><i
+                                            class="fas fa-exchange-alt iconic pr-2"></i>Acceso serviamigo</span></a>
                             </li>
 
                             <li class="nav-item" data-toggle="navbarToggler">
-                                <a class="dropdown-item" (click)="logOut()" role="button"><span class="text-truncate"><i class="fas fa-power-off iconic pr-2"></i>Cerrar sesion</span>
-                                    </a>
+                                <a class="dropdown-item" (click)="logOut()" role="button"><span class="text-truncate"><i
+                                            class="fas fa-power-off iconic pr-2"></i>Cerrar sesion</span>
+                                </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
 
                 <ng-template #login>
-                    <ul class="navbar-nav" id="navbar-nav">
+                    <ul class="navbar-nav mr-5 ml-3" id="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" data-toggle="navbarToggler" routerLink="/home" routerLinkActive="router-link-active">Inicio
+                            <a class="nav-link" data-toggle="navbarToggler" routerLink="/home"
+                                routerLinkActive="router-link-active">Inicio
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown" data-toggle="navbarToggler" data-target=".navbar-collapse">
-                            <a class="nav-link scroll" routerLink="/quotation" routerLinkActive="router-link-active"><span
-                                    class="text-truncate">Solicitar cotización</span></a>
+                        <!-- solicitar cotizacion en tamaño de escritorio -->
+                        <li class="nav-item dropdown d-none d-sm-none d-md-block" data-toggle="navbarToggler"
+                            data-target="navbar-collapse">
+                            <a class="nav-link scroll solicitar2" (click)="cotizacion()"
+                                routerLinkActive="router-link-active"><span class="">Solicitar cotización</span></a>
                         </li>
 
-                        <li class="nav-item" data-target=".navbar-collapse" data-toggle="navbarToggler">
-                            <a class="nav-link scroll" routerLink="/professional_profile" routerLinkActive="router-link-active">Perfil serviamigo</a>
+                        <!-- solicitar cotizacion en tamaño de responsive -->
+                        <li class="nav-item dropdown d-block d-sm-block d-md-none" data-toggle="navbarToggler"
+                            data-target="navbar-collapse">
+                            <a class="nav-link scroll solicitar2" (click)="cotizacion()"
+                                routerLinkActive="router-link-active"><span class="">Solicitar cotización</span></a>
+                        </li>
+
+                        <!-- Serviamigo en tamaño responsive -->
+                        <li class="nav-item d-block d-sm-block d-md-none" data-target=".navbar-collapse"
+                            data-toggle="navbarToggler">
+                            <a routerLinkActive="router-link-active" class="nav-link scroll"
+                                routerLink="/professional_profile"><span class="">Perfil
+                                    serviamigo</span></a>
+                        </li>
+
+                        <!-- Serviamigo en tamaño escritorio -->
+                        <li class="nav-item d-none d-sm-none d-md-block" data-target=".navbar-collapse"
+                            data-toggle="navbarToggler">
+                            <a routerLinkActive="router-link-active" class="nav-link scroll serviamigo"
+                                routerLink="/professional_profile"><span class="">Perfil
+                                    serviamigo</span></a>
                         </li>
 
                         <li class="dropdown" data-toggle="collapse">
-                            <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" routerLink="" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Faqs
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li class="nav-item" data-toggle="navbarToggler">
-                                    <a class="dropdown-item" routerLink="/faq" routerLinkActive="router-link-active">Pregúntas frecuentes</a>
+                                    <a class="dropdown-item" routerLink="/faq"
+                                        routerLinkActive="router-link-active2">Pregúntas frecuentes</a>
                                 </li>
                                 <li class="nav-item" data-toggle="navbarToggler">
-                                    <a class="dropdown-item" routerLink="/reviews" routerLinkActive="router-link-active">Testimonios</a>
+                                    <a class="dropdown-item" routerLink="/reviews"
+                                        routerLinkActive="router-link-active2">Testimonios</a>
                                 </li>
                                 <li class="nav-item" data-toggle="navbarToggler">
-                                    <a class="dropdown-item" routerLink="/about" routerLinkActive="router-link-active">Acerca de nosotros</a>
+                                    <a class="dropdown-item" routerLink="/about"
+                                        routerLinkActive="router-link-active2">Acerca de nosotros</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="nav-item" data-toggle="navbarToggler">
-                            <a class="nav-link scroll" routerLink="/contact" routerLinkActive="router-link-active">Contacto</a>
+                            <a class="nav-link scroll" routerLink="/contact"
+                                routerLinkActive="router-link-active">Contacto</a>
                         </li>
 
                         <!-- imagen para iniciar sesion en tamaño de escritorio -->
 
                         <li class="nav-item d-none d-sm-none d-md-block" data-toggle="navbarToggler">
-                            <a class="nav-link scroll pt-0 pb-0" routerLink="/login" routerLinkActive="router-link-active">
+                            <a class="nav-link scroll pt-0 pb-0 icono" routerLink="/login">
                                 <i class="fas fa-user-circle fa-3x"></i>
                             </a>
                         </li>
@@ -176,7 +247,7 @@
                         <!-- imagen para iniciar sesion en tamaño responsive -->
 
                         <li class="nav-item d-block d-sm-block d-md-none" data-toggle="navbarToggler">
-                            <a class="nav-link scroll " routerLink="/login" routerLinkActive="router-link-active">Acceso
+                            <a class="nav-link scroll " routerLink="/login">Acceso
                                 usuarios</a>
                         </li>
                     </ul>

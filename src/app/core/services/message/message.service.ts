@@ -87,4 +87,20 @@ export class MessageService {
     });
   }
 
+  ContactError(message) {
+    this.Swal.fire({
+      position: 'top-end',
+      icon: 'warning',
+      title: 'Inicie sesión y vuelva a intentarlo',
+      text: message,
+      showCancelButton: true,
+      confirmButtonText: `Continuar`,
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
 }

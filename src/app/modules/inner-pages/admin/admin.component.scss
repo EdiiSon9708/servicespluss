@@ -13,8 +13,21 @@
     animation-name: pulse!important;
 }
 
+::ng-deep .mat-tab-label:active
+
+{
+    border-radius: 30px!important;
+    background: #035aa6!important;
+    color: #fff!important;
+    visibility: visible!important;
+    animation-duration: 2s!important;
+    animation-delay: 300ms!important;
+    animation-iteration-count: infinite!important;
+    animation-name: pulse!important;
+}
+
 ::ng-deep .mat-ink-bar {
-    display: none;
+    background: #035aa6!important;
 }
 
 ::ng-deep .mat-tab-label-container {

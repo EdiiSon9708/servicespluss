@@ -1,10 +1,10 @@
 .contact-box {
-    margin-top: 8rem!important;
+    margin-top: 6rem!important;
 }
 
-.mt-8 {
-    margin-top: 8rem;
-}
+// .mt-8 {
+//     margin-top: 8rem;
+// }
 
 .mt-5,
 .my-5 {
@@ -89,18 +89,7 @@
 }
 
 // estilos de registrese
-.contact-box {
-    margin-top: 8rem!important;
-}
 
-.mt-8 {
-    margin-top: 8rem;
-}
-
-.mt-5,
-.my-5 {
-    margin-top: 5rem;
-}
 
 .mat-form-field {
     display: block;
@@ -121,7 +110,7 @@
     z-index: 0!important;
     border: 2px solid #5a5a5a!important;
     border-radius: 1px!important;
-    margin-top: 3px!important;
+    margin-top: -6px!important;
     -webkit-transition: .2s!important;
     transition: .2s!important;
     cursor: pointer;
@@ -177,4 +166,13 @@
 
 .fa-6x {
     font-size: 7em;
+}
+
+.btn-back {
+    background-color: #fff!important;
+    color: #747474;
+}
+
+::ng-deep .mat-horizontal-content-container {
+    padding-bottom: 0!important;
 }

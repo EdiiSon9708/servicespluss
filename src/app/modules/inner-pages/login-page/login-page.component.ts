@@ -17,6 +17,11 @@ import { ModalAutorizaDatosComponent } from '../../../components/modals/modal-au
 import { ModalAvisoPrivacidadComponent } from '../../../components/modals/modal-aviso-privacidad/modal-aviso-privacidad.component';
 import { ModalPoliticaDatosComponent } from '../../../components/modals/modal-politica-datos/modal-politica-datos.component';
 
+import { ContentWebService } from '@core/services/content-web/content-web.service';
+
+import { ContentPage } from '@shared/models/content-page';
+
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -25,6 +30,9 @@ import { ModalPoliticaDatosComponent } from '../../../components/modals/modal-po
 export class LoginPageComponent implements OnInit {
 
   /** Variables globales */
+
+  textLogin: ContentPage[];
+  
   message = 'Campos obligatorios por confirmar';
   selectedFormAuthentic = 0;
   userRegisterFormGroup: FormGroup;
@@ -35,9 +43,12 @@ export class LoginPageComponent implements OnInit {
   respError: any;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router,
-    private spinner: NgxSpinnerService, private messageService: MessageService, public dialog: MatDialog) { }
+    private spinner: NgxSpinnerService, private messageService: MessageService, public dialog: MatDialog, private contentWebService: ContentWebService) {
+      this.textLogin = this.contentWebService.currentContentvalue;
+     }
 
   ngOnInit(): void {
+
    
   }
 

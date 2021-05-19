@@ -11,6 +11,8 @@ import { User } from '@shared/models/user';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgwWowService } from 'ngx-wow';
 
+import { LocalServiceService } from '@core/services/localService/local-service.service';
+
 @Component({
   selector: 'app-header-two',
   templateUrl: './header.component.html',
@@ -19,17 +21,23 @@ import { NgwWowService } from 'ngx-wow';
 
 export class HeaderComponent implements OnInit {
   
-
+  Cotizacion:string;
+  dataUser: User;
   viewMenu = true;
   /** Variables globales */
   user$: Observable<User> = this.authService.currentUser;
 
   constructor(private wowService: NgwWowService, private authService: AuthService, private router: Router,
-              private messageService: MessageService, private spinner: NgxSpinnerService) {}
+              private messageService: MessageService, private spinner: NgxSpinnerService, private localService: LocalServiceService) {
+              
+              this.dataUser = this.authService.currentUservalue;
+             
+            }
 
   ngOnInit(): void {
     this.wowService.init();
   }
+
 
   /**
    * Metodo que loguea al usuario
@@ -57,4 +65,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  cotizacion(){
+    if (this.dataUser) {
+    }
+    else {
+      const msn = 'Clic en continuar, y regístrate';
+      this.localService.setJsonValue('crear_servicio',1);
+      this.messageService.alertCotizaciónSesion(msn);
+     }
+  }
 }

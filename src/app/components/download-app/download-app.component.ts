@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { ContentPage } from '@shared/models/content-page';
 
 @Component({
   selector: 'app-download',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./download-app.component.scss']
 })
 export class DownloadAppComponent implements OnInit {
+
+  @Input() dataContent: ContentPage[];
 
   constructor() { }
 
