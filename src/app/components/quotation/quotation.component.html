@@ -41,7 +41,7 @@
                                     </mat-form-field>
                                 </div>
 
-                                <div fxLayout="column" fxLayoutAlign="center center">
+                                <div fxLayout="column" fxLayoutAlign="center center" class="mb-2">
                                     <button type="submit" matStepperNext class="btn btn-primary btn-block">Siguiente <i
                                             class="fas fa-long-arrow-alt-right"></i></button>
                                 </div>
@@ -91,6 +91,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- añadir foto en tamaño responsive -->
+                                <div class="upload-box mb-2 d-block d-sm-block d-md-none">
+                                    <div class=" mb-2 upload-box-content">
+                                        <div class="drop-container" ngFileDrop [options]="options"
+                                            (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+                                            [ngClass]="{ 'is-drop-over': dragOver }">
+                                                <label class="upload-button">
+                                                    <input type="file" ngFileSelect [options]="options"
+                                                        (uploadOutput)="onUploadOutput($event)"
+                                                        [uploadInput]="uploadInput" multiple class="d-none"> <span
+                                                        class="btn btn-primary btn-block">selecciona archivos</span>
+                                                </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="d-flex">
                                     <!-- {{files.length}} -->
                                     <div *ngFor="let file of files"
@@ -129,7 +144,7 @@
                                     <!-- </mat-panel-description> -->
                                     <!-- </mat-expansion-panel-header> -->
 
-                                    <div class="row pl-3 pr-3">
+                                    <div class="row pl-sm-0 pr-sm-0">
                                         <!-- input buscar ubicacion -->
                                         <!-- <div class="input-field col-12 col-lg-7 px-0 px-lg-3">
                                                     <mat-form-field class="w-100 autocomplete-container" appearance="outline" fxFlex="100">
@@ -159,7 +174,7 @@
                                                     <button type="button" class="btn btn-primary btn-block btn-css" (click)="onClickAddress()">Guardar</button>
                                                 </div> -->
 
-                                        <form [formGroup]="formDireccion" (ngSubmit)="save($event)">
+                                        <form [formGroup]="formDireccion" (ngSubmit)="save($event)" class="col-12">
                                             <ng-template matStepLabel>Ubicacion</ng-template>
                                             <div class="row d-flex justify-content-center">
                                                 <!-- <div class="col-12 mt-1">
@@ -170,7 +185,7 @@
                                                                 <mat-error>Nombre obligatorio!</mat-error>
                                                             </mat-form-field>
                                                         </div> -->
-                                                <div class="col-6">
+                                                <div class="col-12 col-md-6">
                                                     <!-- <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                                                 <mat-icon matSuffix> location_on</mat-icon>
                                                                 <mat-label>Departamento</mat-label>
@@ -197,7 +212,7 @@
                                                         </mat-error>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12 col-md-6">
                                                     <mat-form-field class="example-full-width w-100">
                                                         <input type="text" placeholder="{{placeCity}}"
                                                             aria-label="Number" [formControl]="myControl2" matInput
@@ -234,7 +249,7 @@
                                                 </div>
                                                 <!-- direction -->
                                                 <div class="col-12 d-flex pl-0 pr-0">
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-md-6">
                                                         <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                                             <mat-label>Dirección</mat-label>
                                                             <mat-icon matSuffix> swap_calls</mat-icon>
@@ -243,7 +258,7 @@
                                                             <mat-error> Via Obligatorio!</mat-error>
                                                         </mat-form-field>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-md-6">
                                                         <mat-form-field appearance="outline" fxFlex="100" class="w-100">
                                                             <mat-icon matSuffix>swap_horizontal_circle</mat-icon>
                                                             <mat-label> Complemento</mat-label>
@@ -299,7 +314,7 @@
                                                     class=" ScrollUp btn btn-primary mt-1 mb-4">Ubicar en el
                                                     mapa</button>
                                             </div>
-                                            <div class="warning text-center mb-2 align-content-center">
+                                            <div class="warning text-center mb-2 align-content-center col-12">
                                                 <div>
                                                     <mat-icon>warning </mat-icon>
                                                 </div>
@@ -330,7 +345,7 @@
                                         </section>
 
                                         <!-- Mapa en tamaño responsive -->
-                                        <section class="d-block d-sm-block d-lg-none col-12 section map-area mt-3">
+                                        <section class="d-block d-sm-block d-lg-none col-12 section map-area my-3">
                                             <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
                                                 [scrollwheel]="false">
                                                 <agm-marker [latitude]="latitude" [longitude]="longitude"

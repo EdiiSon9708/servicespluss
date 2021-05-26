@@ -12,6 +12,9 @@ import { LocalServiceService } from '@core/services/localService/local-service.s
 import { Router } from '@angular/router';
 import { MessageService } from '../../../core/services/message/message.service';
 
+import { ContentPage } from '@shared/models/content-page';
+
+
 
 @Component({
   selector: 'app-admin',
@@ -21,11 +24,15 @@ import { MessageService } from '../../../core/services/message/message.service';
 export class AdminComponent implements OnInit {
 
   /** Varibale globales y datos traidos de otros componente o servicios */
+  contentPage: ContentPage[];
+
   tittle = 'Bienvenido a servicepluss';
   user: User;
 
   constructor(private authService: AuthService, public dialog: MatDialog, private contentWebService: ContentWebService,private localService: LocalServiceService,private router: Router,private messageService: MessageService) {
     this.user = this.authService.currentUservalue;
+    this.contentPage = this.contentWebService.currentContentvalue;
+
     console.log(this.user);
     
     this.contentWebService.getTestimonialThereAre();

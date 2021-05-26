@@ -92,7 +92,7 @@ import { CarouselModule as CarouselModuleOwl  } from 'ngx-owl-carousel-o';
     ModalAvisoPrivacidadComponent,
     LoginComponent,
     ModalImagesServiceComponent,
-    ChangeImageProfileComponent
+    ChangeImageProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -142,7 +142,8 @@ export interface Service {
     idEstado: number;
     totalCotizaciones:number;
     totalFotosCotizaciones:number;
-    totalFotosServicios:number
+    totalFotosServicios:number;
+    totalPagos:number;
 
 
 }

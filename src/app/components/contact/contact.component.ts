@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from '@core/services/message/message.service';
 import { FormsPageService } from '@core/services/forms-page/forms-page.service';
 
+import { User } from '@shared/models/user';
+import { AuthService } from '@core/services/auth/auth.service';
+
 import { Question } from '@shared/models/form-page';
 
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -16,12 +19,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ContactOneComponent implements OnInit {
 
   /** Variables globales */
+  dataUser:User
   contactForm: FormGroup;
   formQuestion: Question = new Question();
   message = 'Campos obligatorios';
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService, private formsPageService: FormsPageService,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService, private authService: AuthService) { 
+                this.dataUser = this.authService.currentUservalue;
+              }
 
   ngOnInit(): void {
     this.initFormContact();
@@ -68,6 +74,7 @@ export class ContactOneComponent implements OnInit {
       }
 
     }
+    
   }
 
   resetForm() {

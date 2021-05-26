@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
+import { ContentPage } from '@shared/models/content-page';
 
 import { ModalServiceComponent } from '@components/modals/modal-service/modal-service.component';
 
@@ -24,6 +26,8 @@ import { ModalImagesServiceComponent } from '../modals/modal-images-service/moda
   styleUrls: ['./my-service.component.scss']
 })
 export class MyServiceComponent implements OnInit {
+
+  @Input() dataContent: ContentPage[];
 
   /** Variable globales */
   fieldSearch = '';

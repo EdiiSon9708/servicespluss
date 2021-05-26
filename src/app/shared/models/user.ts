@@ -28,6 +28,8 @@ export interface User {
     aceptaTerminos:number;
     genero: string;
     shortName:string;
+    nDepto: string;
+    nciudad: string;
 }
 
 export class Register {

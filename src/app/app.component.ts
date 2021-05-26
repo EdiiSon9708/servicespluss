@@ -1,7 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, Scroll } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
+// import { SwUpdate } from '@angular/service-worker';
 import { filter } from 'rxjs/operators';
 
 import { ContentWebService } from '@core/services/content-web/content-web.service';
@@ -14,7 +14,7 @@ import { ContentWebService } from '@core/services/content-web/content-web.servic
 })
 export class AppComponent implements OnInit {
   constructor(router: Router, viewportScroller: ViewportScroller, private contentWebService: ContentWebService,
-              private swUpdate: SwUpdate) {
+             ) {
     router.events.pipe(filter((e): e is Scroll => e instanceof Scroll))
       .subscribe(e => {
         if (e.position) {

@@ -155,6 +155,9 @@
                                     <!-- <i class="far fa-window-restore fa-2x"></i> -->
                                     <span class="material-icons fs-2 text-primary">photo</span>
                                 </a>
+                                <a *ngIf="list.idEstado===2" href="{{dataContent[15].content_pgc}}" target="_blank" role="button" class="" tooltip="Pagos" placement="top">
+                                    <!-- <i class="far fa-window-restore fa-2x"></i> -->
+                                    <img *ngIf="dataContent" [src]="dataContent[16].content_pgc" [alt]="dataContent[16].desc_pgc" width="35px">                                </a>
                             </td>
                             <td class="text-center px-3">
                                 <a *ngIf="list.idEstado!=5" role="button" class="" (click)="removeCotizations(list)" tooltip="Cancelar ( Al cancelar incurre en los gastos dependiendo el estado del servicio )" placement="top">

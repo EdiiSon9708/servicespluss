@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -49,7 +49,7 @@ registerLocaleData(localeEsCo, 'es-Co');
     SocialLoginModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production})
+    // ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production})
   ],
   providers: [
     {

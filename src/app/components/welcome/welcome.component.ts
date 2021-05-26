@@ -5,6 +5,11 @@ import { ModalsComponent } from '@components/modals/modal-list-category/modals.c
 
 import { CategoryPage, ContentPage } from '@shared/models/content-page';
 
+import { User } from '@shared/models/user';
+import { MessageService } from '@core/services/message/message.service';
+import { AuthService } from '@core/services/auth/auth.service';
+
+
 import { NgwWowService } from 'ngx-wow';
 import { MatDialog } from '@angular/material/dialog';
 import * as M from '@src/assets/js/materialize.min.js';
@@ -17,13 +22,17 @@ import * as M from '@src/assets/js/materialize.min.js';
 })
 export class WelcomeComponent implements OnInit, AfterViewInit {
 
+
   /** Variables globales */
+  dataUser: User;
   options = { indicators: true, padding: 10, duration: 0, numVisible: 7, shift: 1 };
   @Input() dataContent: ContentPage[];
   @Input() dataCategories: CategoryPage[];
   @Input() dataFiveCategories: CategoryPage[];
 
-  constructor(private wowService: NgwWowService, public dialog: MatDialog, private router: Router) { }
+  constructor(private wowService: NgwWowService, public dialog: MatDialog, private router: Router, private messageService: MessageService, private authService: AuthService) {
+    this.dataUser = this.authService.currentUservalue;
+   }
 
   ngOnInit(): void {
     this.wowService.init();
@@ -40,11 +49,19 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
         listCategories: this.dataCategories
       }
     });
-    dialogRef.afterClosed().subscribe(result => result);
+    dialogRef
+    
+    .afterClosed().subscribe(result => result);
   }
 
   onClickCotizar(id){
-    this.router.navigate(['/quotation'], { queryParams: {idCategory: id}});
+    if (this.dataUser) {
+      this.router.navigate(['/quotation'], { queryParams: {idCategory: id}});
+    }
+    else {
+      const msn = 'Clic en continuar, y regístrate';
+      this.messageService.alertCotizaciónSesion(msn);
+     }
   }
 
 }

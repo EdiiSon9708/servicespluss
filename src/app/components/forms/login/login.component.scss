@@ -176,3 +176,7 @@
 ::ng-deep .mat-horizontal-content-container {
     padding-bottom: 0!important;
 }
+
+::ng-deep .repeat-password .mat-form-field-wrapper {
+    padding-bottom: 5px;
+}

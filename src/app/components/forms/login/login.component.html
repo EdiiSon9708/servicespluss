@@ -86,7 +86,7 @@
 
                 <mat-step>
 
-                    <ng-template matStepLabel>Contraseña</ng-template>
+                    <ng-template matStepLabel>Datos complementarios</ng-template>
 
                     <mat-form-field appearance="outline" fxFlex="100">
                         <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -98,25 +98,11 @@
                         <mat-error>Campo obligatorio!</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-form-field appearance="outline" fxFlex="100" class="repeat-password">
                         <mat-label>Confirmar contraseña</mat-label>
                         <input type="password" matInput formControlName="confirmPassword" required>
-                        <mat-error>Campo obligatorio!</mat-error>
                     </mat-form-field>
-                    <div>
-                        <button type="button" mat-button matStepperNext class="btn btn-primary btn-block">Siguiente <i
-                                class="fas fa-long-arrow-alt-right"></i></button>
-                    </div>
-                    <div>
-                        <button type="button" mat-button matStepperPrevious class="btn btn-back btn-block mt-2"><i
-                                class="fas fa-long-arrow-alt-left mr-2"></i>Atras</button>
-                    </div>
-
-                </mat-step>
-
-                <mat-step [stepControl]="horizontalStepperStep2">
-                    <ng-template matStepLabel>Terminos y condicones</ng-template>
-                    <div class="form-group form-check">
+                    <div class="form-group form-check mb-0">
                         <label>
                             <input type="checkbox" name="termsAndCondit" required="required" class="form-control"
                                 formControlName="termsAndCondit" />
@@ -125,7 +111,7 @@
                         <a class="cursor" (click)="openDialog(1)"> Terminos &amp; Política de
                             privacidad</a>
                     </div>
-                    <div class="form-group form-check">
+                    <div class="form-group form-check mb-0">
                         <label>
                             <input type="checkbox" name="termsAndCondit1" required="required" class="form-control"
                                 formControlName="termsAndCondit1" />
@@ -153,12 +139,8 @@
                         <button class="" type="submit" class="btn btn-bordered w-100 mt-0"
                             [disabled]="userRegisterFormGroup.invalid">Registrarse</button>
                     </div>
-                    <div>
-                        <button type="button" mat-button matStepperPrevious class="btn btn-back btn-block mt-2"><i
-                                class="fas fa-long-arrow-alt-left mr-2"></i>Atras</button>
-                    </div>
-                </mat-step>
 
+                </mat-step>
             </mat-horizontal-stepper>
         </form>
         <div class="col-12">

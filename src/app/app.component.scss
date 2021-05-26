@@ -1,0 +1,20 @@
+img {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 70px;
+    animation: square-spin 2s cubic-bezier(0.90, 0.99, 0.99, 0.9) 0s infinite;
+    // animation: ball-scale-ripple 1s cubic-bezier(.21,.53,.56,.8) 0s infinite;
+    // animation: square-jelly-box-animate .9s linear -.1s infinite;
+    transform: translateY(0%) rotate(180deg) ;
+    margin-bottom: 20px!important;
+}
+
+p {
+    margin-bottom: 80px;
+    position: relative;
+    text-align: center;
+    margin-bottom: 70px!important;
+}
+
+
